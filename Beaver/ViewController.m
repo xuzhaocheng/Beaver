@@ -22,16 +22,13 @@
 @implementation ViewController
 
 #pragma mark - Properties
-- (NSArray *)recentPhotos
+- (void)setRecentPhotos:(NSArray *)recentPhotos
 {
-    if (!_recentPhotos) {
-        _recentPhotos = [self fetchRecentPhotos];
-        NSLog(@"%@", _recentPhotos);
-    }
-    return _recentPhotos;
+    _recentPhotos = recentPhotos;
+    [self.collectionView reloadData];
 }
 
-- (NSArray *)fetchRecentPhotos
+- (void)fetchRecentPhotos
 {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     NSMutableArray *photos = [[NSMutableArray alloc] init];
@@ -53,6 +50,7 @@
                                                 *stop = YES;
                                             }
                                         }];
+                   self.recentPhotos = photos;
                }
                
                NSLog(@"in block");
@@ -67,8 +65,6 @@
 //    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES],];
 //    PHFetchResult *fetchResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:fetchOptions];
 //    UIImage *image = fetchResult.lastObject;
-    
-    return photos;
 }
 
 #pragma mark - View Controller
@@ -77,6 +73,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self fetchRecentPhotos];
 }
 
 - (void)awakeFromNib
@@ -98,7 +100,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.recentPhotos ? self.recentPhotos.count : 0;
+    return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
