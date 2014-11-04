@@ -15,6 +15,7 @@
 		6B2451C01A0908AA005F4CEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451BF1A0908AA005F4CEF /* Images.xcassets */; };
 		6B2451C31A0908AA005F4CEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451C11A0908AA005F4CEF /* LaunchScreen.xib */; };
 		6B2451CF1A0908AA005F4CEF /* BeaverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451CE1A0908AA005F4CEF /* BeaverTests.m */; };
+		6B691EBA1A0939AC00931CF9 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* ImageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		6B2451CD1A0908AA005F4CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2451CE1A0908AA005F4CEF /* BeaverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaverTests.m; sourceTree = "<group>"; };
 		6B2451DC1A09158C005F4CEF /* Logs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logs.h; sourceTree = "<group>"; };
+		6B691EB81A0939AC00931CF9 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		6B691EB91A0939AC00931CF9 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				6B2451DA1A091517005F4CEF /* App Delegate */,
-				6B2451D91A091505005F4CEF /* Controller */,
+				6B2451D91A091505005F4CEF /* Controllers */,
 				6B2451D81A0914FB005F4CEF /* Views */,
 				6B2451DB1A09152C005F4CEF /* Core Data */,
 				6B2451BF1A0908AA005F4CEF /* Images.xcassets */,
@@ -126,17 +129,19 @@
 			isa = PBXGroup;
 			children = (
 				6B2451BC1A0908AA005F4CEF /* Main.storyboard */,
+				6B691EB81A0939AC00931CF9 /* ImageCell.h */,
+				6B691EB91A0939AC00931CF9 /* ImageCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		6B2451D91A091505005F4CEF /* Controller */ = {
+		6B2451D91A091505005F4CEF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6B2451B91A0908AA005F4CEF /* ViewController.h */,
 				6B2451BA1A0908AA005F4CEF /* ViewController.m */,
 			);
-			name = Controller;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		6B2451DA1A091517005F4CEF /* App Delegate */ = {
@@ -257,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
+				6B691EBA1A0939AC00931CF9 /* ImageCell.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* ViewController.m in Sources */,
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,
@@ -452,6 +458,7 @@
 				6B2451D41A0908AA005F4CEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B2451D51A0908AA005F4CEF /* Build configuration list for PBXNativeTarget "BeaverTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +467,7 @@
 				6B2451D71A0908AA005F4CEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

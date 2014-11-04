@@ -8,11 +8,12 @@
 
 #import "ViewController.h"
 #import "Logs.h"
+#import "ImageCell.h"
 
 @import AssetsLibrary;
 
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -52,19 +53,11 @@
                                         }];
                    self.recentPhotos = photos;
                }
-               
-               NSLog(@"in block");
            }
        } failureBlock:^(NSError *error) {
            ELog(error);
            ULog(@"不能访问相册!");
     }];
-    
-    
-//    PHFetchOptions *fetchOptions = [PHFetchOptions new];
-//    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES],];
-//    PHFetchResult *fetchResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:fetchOptions];
-//    UIImage *image = fetchResult.lastObject;
 }
 
 #pragma mark - View Controller
@@ -72,7 +65,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,16 +73,6 @@
     [self fetchRecentPhotos];
 }
 
-- (void)awakeFromNib
-{
-    [self updateUI];
-}
-
-
-- (void)updateUI
-{
-
-}
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -100,24 +82,15 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return self.recentPhotos ? self.recentPhotos.count : 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Image Cell" forIndexPath:indexPath];
-    [self configCell:cell atIndexPath:indexPath];
+    ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Image Cell" forIndexPath:indexPath];
+    [cell configureForImage:self.recentPhotos[indexPath.row]];
     return cell;
 }
-
-- (void)configCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.bounds];
-    imageView.image = self.recentPhotos[indexPath.row];
-    cell.backgroundView = imageView;
-}
-
-
 
 
 
