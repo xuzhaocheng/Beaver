@@ -42,6 +42,7 @@
 		6B2451C81A0908AA005F4CEF /* BeaverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2451CD1A0908AA005F4CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2451CE1A0908AA005F4CEF /* BeaverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaverTests.m; sourceTree = "<group>"; };
+		6B2451DC1A09158C005F4CEF /* Logs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logs.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +84,11 @@
 		6B2451AE1A0908AA005F4CEF /* Beaver */ = {
 			isa = PBXGroup;
 			children = (
-				6B2451B31A0908AA005F4CEF /* AppDelegate.h */,
-				6B2451B41A0908AA005F4CEF /* AppDelegate.m */,
-				6B2451B91A0908AA005F4CEF /* ViewController.h */,
-				6B2451BA1A0908AA005F4CEF /* ViewController.m */,
-				6B2451BC1A0908AA005F4CEF /* Main.storyboard */,
+				6B2451DA1A091517005F4CEF /* App Delegate */,
+				6B2451D91A091505005F4CEF /* Controller */,
+				6B2451D81A0914FB005F4CEF /* Views */,
+				6B2451DB1A09152C005F4CEF /* Core Data */,
 				6B2451BF1A0908AA005F4CEF /* Images.xcassets */,
-				6B2451C11A0908AA005F4CEF /* LaunchScreen.xib */,
-				6B2451B61A0908AA005F4CEF /* Beaver.xcdatamodeld */,
 				6B2451AF1A0908AA005F4CEF /* Supporting Files */,
 			);
 			path = Beaver;
@@ -99,8 +97,10 @@
 		6B2451AF1A0908AA005F4CEF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6B2451C11A0908AA005F4CEF /* LaunchScreen.xib */,
 				6B2451B01A0908AA005F4CEF /* Info.plist */,
 				6B2451B11A0908AA005F4CEF /* main.m */,
+				6B2451DC1A09158C005F4CEF /* Logs.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -120,6 +120,40 @@
 				6B2451CD1A0908AA005F4CEF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B2451D81A0914FB005F4CEF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B2451BC1A0908AA005F4CEF /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6B2451D91A091505005F4CEF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B2451B91A0908AA005F4CEF /* ViewController.h */,
+				6B2451BA1A0908AA005F4CEF /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6B2451DA1A091517005F4CEF /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				6B2451B31A0908AA005F4CEF /* AppDelegate.h */,
+				6B2451B41A0908AA005F4CEF /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		6B2451DB1A09152C005F4CEF /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				6B2451B61A0908AA005F4CEF /* Beaver.xcdatamodeld */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Beaver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -358,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Beaver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
