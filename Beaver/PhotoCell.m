@@ -7,6 +7,7 @@
 //
 
 #import "PhotoCell.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface PhotoCell ()
 
@@ -14,8 +15,10 @@
 @end
 
 @implementation PhotoCell
-- (void)configureForImage:(UIImage *)image
+- (void)configureWithAsset:(ALAsset *)asset
 {
+    CGImageRef thumbnail = [asset thumbnail];
+    UIImage *image = [UIImage imageWithCGImage:thumbnail];
     self.imageView.image = image;
 }
 @end

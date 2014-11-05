@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ALAsset;
 
 @interface PhotoCell : UICollectionViewCell
-- (void)configureForImage: (UIImage *)image;
+- (void)configureWithAsset: (ALAsset *)asset;
 @end

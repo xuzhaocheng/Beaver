@@ -17,41 +17,45 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSArray *recentPhotos;
+@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
+@property (nonatomic, strong) NSArray *assets;
 @end
 
 @implementation ViewController
 
 #pragma mark - Properties
-- (void)setRecentPhotos:(NSArray *)recentPhotos
+- (void)setAssets:(NSArray *)assets
 {
-    _recentPhotos = recentPhotos;
+    _assets = assets;
     [self.collectionView reloadData];
+}
+
+- (ALAssetsLibrary *)assetsLibrary
+{
+    if (!_assetsLibrary) {
+        _assetsLibrary = [[ALAssetsLibrary alloc] init];
+    }
+    return _assetsLibrary;
 }
 
 - (void)fetchRecentPhotos
 {
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     NSMutableArray *photos = [[NSMutableArray alloc] init];
     
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
+    [self.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos
                            usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
            if (group) {
                [group setAssetsFilter:[ALAssetsFilter allPhotos]];
                
                if (group.numberOfAssets > 0) {
-                   [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:group.numberOfAssets - 2]
-                                           options:0
-                                        usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                                            if (index <= 10) {
-                                                ALAssetRepresentation *representation = [result defaultRepresentation];
-                                                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                                                [photos addObject:[UIImage imageWithCGImage:[result thumbnail]]];
-                                            } else {
-                                                *stop = YES;
-                                            }
-                                        }];
-                   self.recentPhotos = photos;
+                   
+                   [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                       if (result) {
+                           [photos addObject:result];
+                       }
+                   }];
+                   
+                   self.assets = photos;
                }
            }
        } failureBlock:^(NSError *error) {
@@ -82,13 +86,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.recentPhotos ? self.recentPhotos.count : 0;
+    return self.assets ? self.assets.count : 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Photo Cell" forIndexPath:indexPath];
-    [cell configureForImage:self.recentPhotos[indexPath.row]];
+    [cell configureWithAsset:self.assets[indexPath.row]];
     return cell;
 }
 
