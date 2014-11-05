@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
+@property (nonatomic) BOOL needUpdateUI;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *toolsScrollView;
@@ -31,6 +32,8 @@
     [self configureImageScrollView];
     if (self.view.window) {
         [self updateUI];
+    } else {
+        self.needUpdateUI = YES;
     }
 }
 
@@ -69,7 +72,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self updateUI];
+    if (self.needUpdateUI) {
+        [self updateUI];
+        self.needUpdateUI = NO;
+    }
 }
 
 

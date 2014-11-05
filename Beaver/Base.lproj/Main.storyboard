@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="939" y="426"/>
         </scene>
-        <!--Edit Photo View Controller-->
+        <!--Edit Photo-->
         <scene sceneID="Gbu-k2-Zlp">
             <objects>
                 <viewController id="AIM-N5-QGL" customClass="EditPhotoViewController" sceneMemberID="viewController">
@@ -103,7 +103,7 @@
                             <constraint firstItem="oOF-nN-jZp" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="wJk-5Q-19b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hRH-pm-MIt">
+                    <navigationItem key="navigationItem" title="Edit Photo" id="hRH-pm-MIt">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Mo-vQ-HIG">
                             <connections>
                                 <segue destination="GC7-iC-3m6" kind="unwind" identifier="Edit Done" unwindAction="editDone:" id="7R2-N8-97D"/>
