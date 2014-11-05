@@ -82,11 +82,16 @@
 - (void)prepareViewController:(id)vc forSegue:(NSString *)segueIdentifier fromIndexPath:(NSIndexPath *)indexPath
 {
     ALAsset *asset = self.assets[indexPath.row];
-    if ([segueIdentifier isEqualToString:@"show photo"]) {
+    
+    if ([segueIdentifier isEqualToString:@"Show Photo"]) {
+        EditPhotoViewController *epvc = nil;
         if ([vc isKindOfClass:[EditPhotoViewController class]]) {
-            EditPhotoViewController *epvc = vc;
-            epvc.photoAsset = asset;
+            epvc = vc;
+        } else if ([vc isKindOfClass:[UINavigationController class]] &&
+                   [[vc topViewController] isKindOfClass:[EditPhotoViewController class]]) {
+            epvc = (EditPhotoViewController *)[vc topViewController];
         }
+        epvc.photoAsset = asset;
     }
 }
 
@@ -97,9 +102,15 @@
         indexPath = [self.collectionView indexPathForCell:sender];
     }
     
+    
     [self prepareViewController:segue.destinationViewController
                        forSegue:segue.identifier
                   fromIndexPath:indexPath];
+    
+}
+
+- (IBAction)editDone:(UIStoryboardSegue *)segue
+{
     
 }
 

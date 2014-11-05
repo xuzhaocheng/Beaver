@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -41,7 +42,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="imageView" destination="Aoz-0Q-qmM" id="oPP-pw-nR8"/>
-                                            <segue destination="AIM-N5-QGL" kind="show" identifier="show photo" id="SJF-cu-aak"/>
+                                            <segue destination="1f9-Mq-6Pr" kind="presentation" identifier="Show Photo" id="SJF-cu-aak"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -54,6 +55,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Beaver" id="aIe-Vi-ZvY"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionView" destination="ZUT-uD-piK" id="wrp-ty-CwD"/>
@@ -74,13 +76,46 @@
                     <view key="view" contentMode="scaleToFill" id="Rce-F5-X3f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-PD-RCN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOF-nN-jZp">
+                                <rect key="frame" x="0.0" y="503" width="320" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="FPg-Mv-aqH"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rdy-PD-RCN" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="Aga-s4-VUb"/>
+                            <constraint firstItem="oOF-nN-jZp" firstAttribute="bottom" secondItem="nuY-pg-jFJ" secondAttribute="top" id="CFb-xE-xIQ"/>
+                            <constraint firstItem="Rdy-PD-RCN" firstAttribute="top" secondItem="Rce-F5-X3f" secondAttribute="top" id="EYs-Vf-bi7"/>
+                            <constraint firstItem="Rdy-PD-RCN" firstAttribute="bottom" secondItem="nuY-pg-jFJ" secondAttribute="top" id="HWc-Ul-XI0"/>
+                            <constraint firstItem="oOF-nN-jZp" firstAttribute="leading" secondItem="nuY-pg-jFJ" secondAttribute="leading" id="U4z-nq-AeT"/>
+                            <constraint firstAttribute="trailing" secondItem="Rdy-PD-RCN" secondAttribute="trailing" id="qSd-q4-xbY"/>
+                            <constraint firstItem="oOF-nN-jZp" firstAttribute="trailing" secondItem="nuY-pg-jFJ" secondAttribute="trailing" id="vCh-Tq-clq"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hRH-pm-MIt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Mo-vQ-HIG">
+                            <connections>
+                                <segue destination="GC7-iC-3m6" kind="unwind" identifier="Edit Done" unwindAction="editDone:" id="7R2-N8-97D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="imageScrollView" destination="Rdy-PD-RCN" id="Xgl-Ka-ibq"/>
+                        <outlet property="toolsScrollView" destination="oOF-nN-jZp" id="tm7-6g-tuV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GC7-iC-3m6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="426"/>
+            <point key="canvasLocation" x="1849" y="426"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mTd-Rf-ueu">
@@ -100,6 +135,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbf-CP-bYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="510" y="426"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Id0-Ap-eMf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbQ-0R-Ltd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1f9-Mq-6Pr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w0o-eg-vyN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AIM-N5-QGL" kind="relationship" relationship="rootViewController" id="RaG-Bf-sYB"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1399" y="426"/>
         </scene>
     </scenes>
 </document>
