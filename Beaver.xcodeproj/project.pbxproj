@@ -17,6 +17,7 @@
 		6B2451CF1A0908AA005F4CEF /* BeaverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451CE1A0908AA005F4CEF /* BeaverTests.m */; };
 		6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */; };
 		6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452161A0A2F45005F4CEF /* ToolCell.m */; };
+		6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,8 @@
 		6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhotoViewController.m; sourceTree = "<group>"; };
 		6B2452151A0A2F45005F4CEF /* ToolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolCell.h; sourceTree = "<group>"; };
 		6B2452161A0A2F45005F4CEF /* ToolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolCell.m; sourceTree = "<group>"; };
+		6B24521C1A0A57AE005F4CEF /* ToolCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolCellInfo.h; sourceTree = "<group>"; };
+		6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolCellInfo.m; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +96,7 @@
 		6B2451AE1A0908AA005F4CEF /* Beaver */ = {
 			isa = PBXGroup;
 			children = (
+				6B2452181A0A4402005F4CEF /* Models */,
 				6B2451DA1A091517005F4CEF /* App Delegate */,
 				6B2451D91A091505005F4CEF /* Controllers */,
 				6B2451D81A0914FB005F4CEF /* Views */,
@@ -169,6 +173,15 @@
 				6B2451B61A0908AA005F4CEF /* Beaver.xcdatamodeld */,
 			);
 			name = "Core Data Models";
+			sourceTree = "<group>";
+		};
+		6B2452181A0A4402005F4CEF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B24521C1A0A57AE005F4CEF /* ToolCellInfo.h */,
+				6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +287,7 @@
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
 				6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */,
 				6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */,
+				6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */,
 				6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */,

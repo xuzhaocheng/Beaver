@@ -7,11 +7,11 @@
 //
 
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <objc/runtime.h>
 #import "EditPhotoViewController.h"
 #import "ToolCell.h"
+#import "ToolCellInfo.h"
 
-#define EPVC_CELL_TITLE @"CellTitle"
-#define EPVC_CELL_ICON  @"CellIcon"
 
 @interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL needUpdateUI;
 
-@property (strong, nonatomic) NSArray *cellInfos;
+@property (strong, nonatomic) NSArray *toolCellInfos;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UICollectionView *toolsView;
@@ -70,22 +70,15 @@
     self.image = [UIImage imageWithCGImage:[[_photoAsset defaultRepresentation] fullResolutionImage]];
 }
 
-- (NSArray *)cellInfos
+- (NSArray *)toolCellInfos
 {
-    if (!_cellInfos) {
+    if (!_toolCellInfos) {
         NSMutableArray *aMutableArray = [[NSMutableArray alloc] init];
-        [aMutableArray addObject:[self generateDictWithTitle:@"裁剪" iconURL:@""]];
-        _cellInfos = aMutableArray;
+        [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Cropping" icon:@""]];
+        _toolCellInfos = aMutableArray;
     }
-    return _cellInfos;
+    return _toolCellInfos;
 }
-
-- (NSDictionary *)generateDictWithTitle: (NSString *)title iconURL:(NSString *)iconURL
-{
-    return @{ EPVC_CELL_TITLE : title,
-              EPVC_CELL_ICON : iconURL };
-}
-
 
 #pragma mark - View Controller
 
@@ -185,21 +178,41 @@
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.cellInfos.count;
+    return self.toolCellInfos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ToolCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Tool Cell" forIndexPath:indexPath];
-    NSDictionary *dict = self.cellInfos[indexPath.row];
-    [cell configureCellWithTitle:[dict valueForKey:EPVC_CELL_TITLE] image:nil];
+    ToolCellInfo *cellInfo = self.toolCellInfos[indexPath.row];
+    [cell configureCellWithTitle:cellInfo.title image:nil];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ToolCellInfo *toolCellInfo = self.toolCellInfos[indexPath.row];
     
+    NSString *selectorName = [NSString stringWithFormat:@"%@%@Action", [[toolCellInfo.title substringToIndex:1] lowercaseString], [toolCellInfo.title substringFromIndex:1]];
+    
+    SEL selector = NSSelectorFromString(selectorName);
+    
+    // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+    if ([self respondsToSelector:selector]) {
+        ((void (*)(id, SEL))[self methodForSelector:selector])(self, selector);
+    }
+}
+
+
+#pragma mark -
+#pragma mark - Photo Editor
+#pragma mark -
+
+#pragma mark - Cropping
+- (void)croppingAction
+{
+    NSLog(@"crop");
 }
 
 /*

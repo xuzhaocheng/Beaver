@@ -114,6 +114,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="imageView" destination="HpH-Sb-JUC" id="jti-Oa-u3R"/>
                                             <outlet property="titleLabel" destination="YsP-Ci-eoD" id="0xp-J4-pm3"/>

@@ -10,5 +10,5 @@
 
 @interface ToolCell : UICollectionViewCell
 
-- (void)configureCellWithTitle:(NSString *)title image:(UIImage *)image;
+- (void)configureCellWithTitle:(NSString *)titile image:(UIImage *)image;
 @end
