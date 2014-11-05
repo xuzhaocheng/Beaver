@@ -7,7 +7,7 @@
         <!--Beaver-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -41,6 +41,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="imageView" destination="Aoz-0Q-qmM" id="oPP-pw-nR8"/>
+                                            <segue destination="AIM-N5-QGL" kind="show" identifier="show photo" id="SJF-cu-aak"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -61,6 +62,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="939" y="426"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Gbu-k2-Zlp">
+            <objects>
+                <viewController id="AIM-N5-QGL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uYT-UG-Fce"/>
+                        <viewControllerLayoutGuide type="bottom" id="nuY-pg-jFJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rce-F5-X3f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="426"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mTd-Rf-ueu">

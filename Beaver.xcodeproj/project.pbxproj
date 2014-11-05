@@ -10,7 +10,7 @@
 		6B2451B21A0908AA005F4CEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451B11A0908AA005F4CEF /* main.m */; };
 		6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451B41A0908AA005F4CEF /* AppDelegate.m */; };
 		6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451B61A0908AA005F4CEF /* Beaver.xcdatamodeld */; };
-		6B2451BB1A0908AA005F4CEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451BA1A0908AA005F4CEF /* ViewController.m */; };
+		6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451BA1A0908AA005F4CEF /* MainViewController.m */; };
 		6B2451BE1A0908AA005F4CEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451BC1A0908AA005F4CEF /* Main.storyboard */; };
 		6B2451C01A0908AA005F4CEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451BF1A0908AA005F4CEF /* Images.xcassets */; };
 		6B2451C31A0908AA005F4CEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451C11A0908AA005F4CEF /* LaunchScreen.xib */; };
@@ -35,8 +35,8 @@
 		6B2451B31A0908AA005F4CEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B2451B41A0908AA005F4CEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6B2451B71A0908AA005F4CEF /* Beaver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Beaver.xcdatamodel; sourceTree = "<group>"; };
-		6B2451B91A0908AA005F4CEF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6B2451BA1A0908AA005F4CEF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6B2451B91A0908AA005F4CEF /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6B2451BA1A0908AA005F4CEF /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		6B2451BD1A0908AA005F4CEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B2451BF1A0908AA005F4CEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6B2451C21A0908AA005F4CEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 		6B2451D91A091505005F4CEF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6B2451B91A0908AA005F4CEF /* ViewController.h */,
-				6B2451BA1A0908AA005F4CEF /* ViewController.m */,
+				6B2451B91A0908AA005F4CEF /* MainViewController.h */,
+				6B2451BA1A0908AA005F4CEF /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
 				6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
-				6B2451BB1A0908AA005F4CEF /* ViewController.m in Sources */,
+				6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */,
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

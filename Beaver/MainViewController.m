@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 Zhejiang University. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "Logs.h"
 #import "PhotoCell.h"
 
 @import AssetsLibrary;
 
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface MainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSArray *assets;
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 #pragma mark - Properties
 - (void)setAssets:(NSArray *)assets
@@ -38,7 +38,7 @@
     return _assetsLibrary;
 }
 
-- (void)fetchRecentPhotos
+- (void)fetchAssets
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
     
@@ -74,7 +74,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self fetchRecentPhotos];
+    [self fetchAssets];
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"show photo"]) {
+        
+    }
 }
 
 
