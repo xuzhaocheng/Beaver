@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 Zhejiang University. All rights reserved.
 //
 
-#import "ImageCell.h"
+#import "PhotoCell.h"
 
-@interface ImageCell ()
+@interface PhotoCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end
 
-@implementation ImageCell
+@implementation PhotoCell
 - (void)configureForImage:(UIImage *)image
 {
     self.imageView.image = image;

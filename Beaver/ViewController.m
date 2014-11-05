@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "Logs.h"
-#import "ImageCell.h"
+#import "PhotoCell.h"
 
 @import AssetsLibrary;
 
@@ -40,13 +40,13 @@
                [group setAssetsFilter:[ALAssetsFilter allPhotos]];
                
                if (group.numberOfAssets > 0) {
-                   [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:group.numberOfAssets - 1]
+                   [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:group.numberOfAssets - 2]
                                            options:0
                                         usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                                             if (index <= 10) {
                                                 ALAssetRepresentation *representation = [result defaultRepresentation];
                                                 UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                                                [photos addObject:latestPhoto];
+                                                [photos addObject:[UIImage imageWithCGImage:[result thumbnail]]];
                                             } else {
                                                 *stop = YES;
                                             }
@@ -87,7 +87,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Image Cell" forIndexPath:indexPath];
+    PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Photo Cell" forIndexPath:indexPath];
     [cell configureForImage:self.recentPhotos[indexPath.row]];
     return cell;
 }

@@ -15,7 +15,7 @@
 		6B2451C01A0908AA005F4CEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451BF1A0908AA005F4CEF /* Images.xcassets */; };
 		6B2451C31A0908AA005F4CEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451C11A0908AA005F4CEF /* LaunchScreen.xib */; };
 		6B2451CF1A0908AA005F4CEF /* BeaverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451CE1A0908AA005F4CEF /* BeaverTests.m */; };
-		6B691EBA1A0939AC00931CF9 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* ImageCell.m */; };
+		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +44,8 @@
 		6B2451CD1A0908AA005F4CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2451CE1A0908AA005F4CEF /* BeaverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaverTests.m; sourceTree = "<group>"; };
 		6B2451DC1A09158C005F4CEF /* Logs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logs.h; sourceTree = "<group>"; };
-		6B691EB81A0939AC00931CF9 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
-		6B691EB91A0939AC00931CF9 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				6B2451BC1A0908AA005F4CEF /* Main.storyboard */,
-				6B691EB81A0939AC00931CF9 /* ImageCell.h */,
-				6B691EB91A0939AC00931CF9 /* ImageCell.m */,
+				6B691EB81A0939AC00931CF9 /* PhotoCell.h */,
+				6B691EB91A0939AC00931CF9 /* PhotoCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
-				6B691EBA1A0939AC00931CF9 /* ImageCell.m in Sources */,
+				6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* ViewController.m in Sources */,
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,

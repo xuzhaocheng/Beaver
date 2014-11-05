@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageCell : UICollectionViewCell
+@interface PhotoCell : UICollectionViewCell
 - (void)configureForImage: (UIImage *)image;
 @end
