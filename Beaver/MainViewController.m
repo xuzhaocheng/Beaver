@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "EditPhotoViewController.h"
 #import "Logs.h"
 #import "PhotoCell.h"
 
@@ -78,13 +79,29 @@
 }
 
 #pragma mark - Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareViewController:(id)vc forSegue:(NSString *)segueIdentifier fromIndexPath:(NSIndexPath *)indexPath
 {
-    if ([segue.identifier isEqualToString:@"show photo"]) {
-        
+    ALAsset *asset = self.assets[indexPath.row];
+    if ([segueIdentifier isEqualToString:@"show photo"]) {
+        if ([vc isKindOfClass:[EditPhotoViewController class]]) {
+            EditPhotoViewController *epvc = vc;
+            epvc.photoAsset = asset;
+        }
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = nil;
+    if ([sender isKindOfClass:[UICollectionViewCell class]]) {
+        indexPath = [self.collectionView indexPathForCell:sender];
+    }
+    
+    [self prepareViewController:segue.destinationViewController
+                       forSegue:segue.identifier
+                  fromIndexPath:indexPath];
+    
+}
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

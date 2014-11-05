@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="939" y="426"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Photo View Controller-->
         <scene sceneID="Gbu-k2-Zlp">
             <objects>
-                <viewController id="AIM-N5-QGL" sceneMemberID="viewController">
+                <viewController id="AIM-N5-QGL" customClass="EditPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uYT-UG-Fce"/>
                         <viewControllerLayoutGuide type="bottom" id="nuY-pg-jFJ"/>

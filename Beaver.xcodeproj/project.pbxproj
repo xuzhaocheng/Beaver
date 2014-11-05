@@ -15,6 +15,7 @@
 		6B2451C01A0908AA005F4CEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451BF1A0908AA005F4CEF /* Images.xcassets */; };
 		6B2451C31A0908AA005F4CEF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B2451C11A0908AA005F4CEF /* LaunchScreen.xib */; };
 		6B2451CF1A0908AA005F4CEF /* BeaverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451CE1A0908AA005F4CEF /* BeaverTests.m */; };
+		6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		6B2451CD1A0908AA005F4CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B2451CE1A0908AA005F4CEF /* BeaverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaverTests.m; sourceTree = "<group>"; };
 		6B2451DC1A09158C005F4CEF /* Logs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logs.h; sourceTree = "<group>"; };
+		6B2451DD1A09D010005F4CEF /* EditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoViewController.h; sourceTree = "<group>"; };
+		6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhotoViewController.m; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +143,8 @@
 			children = (
 				6B2451B91A0908AA005F4CEF /* MainViewController.h */,
 				6B2451BA1A0908AA005F4CEF /* MainViewController.m */,
+				6B2451DD1A09D010005F4CEF /* EditPhotoViewController.h */,
+				6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
+				6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */,
 				6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */,
