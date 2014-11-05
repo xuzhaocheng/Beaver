@@ -77,30 +77,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-PD-RCN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-PD-RCN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="AIM-N5-QGL" id="Qnc-Qq-xAA"/>
                                 </connections>
                             </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOF-nN-jZp">
-                                <rect key="frame" x="0.0" y="503" width="320" height="65"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-KI-PXi">
+                                <rect key="frame" x="0.0" y="488" width="320" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="FPg-Mv-aqH"/>
+                                    <constraint firstAttribute="height" constant="80" id="hxa-Ac-8ey"/>
                                 </constraints>
-                            </scrollView>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="15" id="0av-F7-qnd">
+                                    <size key="itemSize" width="50" height="68"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="7" minY="5" maxX="7" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Tool Cell" id="eaa-jJ-183" customClass="ToolCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpH-Sb-JUC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsP-Ci-eoD">
+                                                    <rect key="frame" x="4" y="46" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="HpH-Sb-JUC" id="jti-Oa-u3R"/>
+                                            <outlet property="titleLabel" destination="YsP-Ci-eoD" id="0xp-J4-pm3"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="AIM-N5-QGL" id="YST-O2-9ua"/>
+                                    <outlet property="delegate" destination="AIM-N5-QGL" id="RJ6-Bx-pfv"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Rdy-PD-RCN" secondAttribute="bottom" id="2dk-HN-ymt"/>
-                            <constraint firstAttribute="bottom" secondItem="oOF-nN-jZp" secondAttribute="bottom" id="33J-Sy-2Ji"/>
                             <constraint firstItem="Rdy-PD-RCN" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="Aga-s4-VUb"/>
                             <constraint firstItem="Rdy-PD-RCN" firstAttribute="top" secondItem="Rce-F5-X3f" secondAttribute="top" id="EYs-Vf-bi7"/>
-                            <constraint firstAttribute="trailing" secondItem="oOF-nN-jZp" secondAttribute="trailing" id="PCM-ZH-6xv"/>
+                            <constraint firstItem="Jv6-KI-PXi" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="Piq-2B-vER"/>
+                            <constraint firstAttribute="trailing" secondItem="Jv6-KI-PXi" secondAttribute="trailing" id="kD0-8U-dbR"/>
                             <constraint firstAttribute="trailing" secondItem="Rdy-PD-RCN" secondAttribute="trailing" id="qSd-q4-xbY"/>
-                            <constraint firstItem="oOF-nN-jZp" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="wJk-5Q-19b"/>
+                            <constraint firstAttribute="bottom" secondItem="Jv6-KI-PXi" secondAttribute="bottom" id="sfB-CU-y0T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Photo" id="hRH-pm-MIt">
@@ -114,7 +149,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageScrollView" destination="Rdy-PD-RCN" id="Xgl-Ka-ibq"/>
-                        <outlet property="toolsScrollView" destination="oOF-nN-jZp" id="tm7-6g-tuV"/>
+                        <outlet property="toolsView" destination="Jv6-KI-PXi" id="d0D-Ii-n9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>

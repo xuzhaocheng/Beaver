@@ -6,17 +6,18 @@
 //  Copyright (c) 2014年 Zhejiang University. All rights reserved.
 //
 
-#import "EditPhotoViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "EditPhotoViewController.h"
+#import "ToolCell.h"
 
-@interface EditPhotoViewController () <UIScrollViewDelegate>
+@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL needUpdateUI;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
-@property (weak, nonatomic) IBOutlet UIScrollView *toolsScrollView;
+@property (weak, nonatomic) IBOutlet UICollectionView *toolsView;
 
 @end
 
@@ -67,6 +68,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.imageScrollView addSubview:self.imageView];
+    self.toolsView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -109,7 +111,7 @@
     UIEdgeInsets contentInsets = scrollView.contentInset;
     
     boundsSize.width = boundsSize.width - contentInsets.left - contentInsets.right;
-    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom - self.toolsScrollView.bounds.size.height;
+    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom - self.toolsView.bounds.size.height;
     
     if (frameToCenter.size.width < boundsSize.width) {
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2.0;
@@ -137,6 +139,19 @@
     [self centeredFrame:self.imageView forScrollView:scrollView];
 }
 
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ToolCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Tool Cell" forIndexPath:indexPath];
+    [cell configureCellWithTitle:@"title" image:nil];
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
