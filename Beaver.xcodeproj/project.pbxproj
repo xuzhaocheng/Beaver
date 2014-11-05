@@ -96,7 +96,7 @@
 				6B2451DA1A091517005F4CEF /* App Delegate */,
 				6B2451D91A091505005F4CEF /* Controllers */,
 				6B2451D81A0914FB005F4CEF /* Views */,
-				6B2451DB1A09152C005F4CEF /* Core Data */,
+				6B2451DB1A09152C005F4CEF /* Core Data Models */,
 				6B2451BF1A0908AA005F4CEF /* Images.xcassets */,
 				6B2451AF1A0908AA005F4CEF /* Supporting Files */,
 			);
@@ -163,12 +163,12 @@
 			name = "App Delegate";
 			sourceTree = "<group>";
 		};
-		6B2451DB1A09152C005F4CEF /* Core Data */ = {
+		6B2451DB1A09152C005F4CEF /* Core Data Models */ = {
 			isa = PBXGroup;
 			children = (
 				6B2451B61A0908AA005F4CEF /* Beaver.xcdatamodeld */,
 			);
-			name = "Core Data";
+			name = "Core Data Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

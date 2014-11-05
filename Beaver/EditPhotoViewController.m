@@ -10,18 +10,25 @@
 #import "EditPhotoViewController.h"
 #import "ToolCell.h"
 
+#define EPVC_CELL_TITLE @"CellTitle"
+#define EPVC_CELL_ICON  @"CellIcon"
+
 @interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL needUpdateUI;
 
+@property (strong, nonatomic) NSArray *cellInfos;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UICollectionView *toolsView;
 
 @end
 
+
 @implementation EditPhotoViewController
+
 
 #pragma mark - Properties
 
@@ -63,9 +70,27 @@
     self.image = [UIImage imageWithCGImage:[[_photoAsset defaultRepresentation] fullResolutionImage]];
 }
 
+- (NSArray *)cellInfos
+{
+    if (!_cellInfos) {
+        NSMutableArray *aMutableArray = [[NSMutableArray alloc] init];
+        [aMutableArray addObject:[self generateDictWithTitle:@"裁剪" iconURL:@""]];
+        _cellInfos = aMutableArray;
+    }
+    return _cellInfos;
+}
+
+- (NSDictionary *)generateDictWithTitle: (NSString *)title iconURL:(NSString *)iconURL
+{
+    return @{ EPVC_CELL_TITLE : title,
+              EPVC_CELL_ICON : iconURL };
+}
+
+
 #pragma mark - View Controller
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.imageScrollView addSubview:self.imageView];
     self.toolsView.backgroundColor = [UIColor clearColor];
@@ -80,12 +105,29 @@
     }
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self updateScrollViewContentInsets];
+}
+
 
 #pragma mark - Helpers
 
 - (void)updateUI
 {
     [self centeredFrame:self.imageView forScrollView:self.imageScrollView];
+}
+
+// 设置scrollView的contentInsets
+- (void)updateScrollViewContentInsets
+{
+    UIEdgeInsets insets = self.imageScrollView.contentInset;
+    
+    insets.bottom = self.toolsView.bounds.size.height;
+    if (!UIEdgeInsetsEqualToEdgeInsets(insets, self.imageScrollView.contentInset)) {
+        self.imageScrollView.contentInset = insets;
+    }
 }
 
 - (void)configureImageScrollView
@@ -143,15 +185,23 @@
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.cellInfos.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ToolCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Tool Cell" forIndexPath:indexPath];
-    [cell configureCellWithTitle:@"title" image:nil];
+    NSDictionary *dict = self.cellInfos[indexPath.row];
+    [cell configureCellWithTitle:[dict valueForKey:EPVC_CELL_TITLE] image:nil];
     return cell;
 }
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 /*
 #pragma mark - Navigation
 
