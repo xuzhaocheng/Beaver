@@ -133,9 +133,10 @@
         CGFloat maxScale = 3;
         self.imageScrollView.minimumZoomScale = minScale;
         self.imageScrollView.maximumZoomScale = maxScale;
-        self.imageScrollView.zoomScale = minScale;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageScrollView.zoomScale = minScale;
+        });
         self.imageScrollView.contentSize = self.imageScrollView.bounds.size;
-        NSLog(@"bound size: %@", NSStringFromCGSize(self.imageScrollView.bounds.size));
     }
 }
 
@@ -214,7 +215,7 @@
 {
     NSLog(@"crop");
     NSLog(@"contentSize: %@", NSStringFromCGSize(self.imageScrollView.contentSize));
-//    self.imageScrollView.z, oomScale = self.imageScrollView.minimumZoomScale;
+    self.imageScrollView.zoomScale = self.imageScrollView.minimumZoomScale;
     self.allowZooming = NO;
     
     [self.imageView beginCroppingWithCroppingRect:CGRectZero];
