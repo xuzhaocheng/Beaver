@@ -11,6 +11,7 @@
 #import "EditPhotoViewController.h"
 #import "ToolCell.h"
 #import "ToolCellInfo.h"
+#import "Logs.h"
 
 #import "UIImageView+Cropping.h"
 
@@ -38,7 +39,6 @@
 {
     self.imageView.image = image;
     self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    
     [self configureImageScrollView];
 }
 
@@ -57,6 +57,7 @@
 {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;
 }
@@ -64,7 +65,8 @@
 - (void)setPhotoAsset:(ALAsset *)photoAsset
 {
     _photoAsset = photoAsset;
-    self.image = [UIImage imageWithCGImage:[[_photoAsset defaultRepresentation] fullResolutionImage]];
+    // 如果使用全分辨率，裁剪的时候会非常卡。
+    self.image = [UIImage imageWithCGImage:[[_photoAsset defaultRepresentation] fullScreenImage]];
 }
 
 - (NSArray *)toolCellInfos
@@ -213,12 +215,27 @@
 #pragma mark - Cropping
 - (void)croppingAction
 {
-    NSLog(@"crop");
-    NSLog(@"contentSize: %@", NSStringFromCGSize(self.imageScrollView.contentSize));
-    self.imageScrollView.zoomScale = self.imageScrollView.minimumZoomScale;
+//    self.imageScrollView.zoomScale = 1;// self.imageScrollView.minimumZoomScale;
+    [self resizeImage];
     self.allowZooming = NO;
+    self.imageScrollView.scrollEnabled = NO;
+    self.imageScrollView.zoomScale = 1;
     
+    NSLog(@"asfas: %@", NSStringFromCGRect(self.imageView.bounds));
+    NSLog(@"Scale: %f", self.imageView.image.scale);
     [self.imageView beginCroppingWithCroppingRect:CGRectZero];
+}
+
+- (void)resizeImage
+{
+    
+    CGRect bounds = self.imageScrollView.bounds;
+    CGFloat xScale = bounds.size.width / self.image.size.width;
+    CGFloat yScale = bounds.size.height / self.image.size.height;
+    
+    CGFloat minScale = MIN(xScale, yScale);
+    self.imageView.frame = CGRectMake(0, 0, self.image.size.width * minScale, self.image.size.height * minScale);
+    self.imageScrollView.zoomScale = 1;
 }
 
 /*
