@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -51,7 +51,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Beaver" id="aIe-Vi-ZvY"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -127,7 +127,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Rdy-PD-RCN" secondAttribute="bottom" id="2dk-HN-ymt"/>
                             <constraint firstItem="Rdy-PD-RCN" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="Aga-s4-VUb"/>
@@ -155,7 +155,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GC7-iC-3m6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="426"/>
+            <point key="canvasLocation" x="1792" y="426"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mTd-Rf-ueu">
@@ -192,7 +192,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbQ-0R-Ltd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="426"/>
+            <point key="canvasLocation" x="1368" y="426"/>
         </scene>
     </scenes>
 </document>

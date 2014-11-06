@@ -271,7 +271,7 @@ static CGPoint LastMovePoint;
 
 #pragma mark - Drag && Resize
 
-#define EDGE_THRESHOLD    50.f
+#define EDGE_THRESHOLD    20.f
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"touches began");

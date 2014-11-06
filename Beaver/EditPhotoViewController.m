@@ -20,6 +20,8 @@
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
+
+@property (strong, nonatomic) UIImageView *imageViewForCropping;
 @property (nonatomic) BOOL allowZooming;
 
 @property (strong, nonatomic) NSArray *toolCellInfos;
@@ -67,6 +69,33 @@
     _photoAsset = photoAsset;
     // 如果使用全分辨率，裁剪的时候会非常卡。
     self.image = [UIImage imageWithCGImage:[[_photoAsset defaultRepresentation] fullScreenImage]];
+}
+
+
+#define EDGE_PADDING    10.f
+- (UIImageView *)imageViewForCropping
+{
+    if (!_imageViewForCropping) {
+        UIImageView *imageViewForCropping = [[UIImageView alloc] init];
+        CGRect bounds = self.imageScrollView.bounds;
+        
+        bounds.size.width -= EDGE_PADDING * 2;
+        bounds.size.height -= EDGE_PADDING * 2;
+        
+        CGFloat xScale = bounds.size.width / self.image.size.width;
+        CGFloat yScale = bounds.size.height / self.image.size.height;
+        self.view.backgroundColor = [UIColor blackColor];
+        CGFloat minScale = MIN(xScale, yScale);
+        
+        imageViewForCropping.image = self.image;
+        imageViewForCropping.frame = CGRectMake(0, 0, self.image.size.width * minScale, self.image.size.height * minScale);
+        imageViewForCropping.center = CGPointMake(self.view.bounds.size.width / 2,
+                                                  (self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height) / 2);
+        
+        [self.view addSubview:imageViewForCropping];
+        _imageViewForCropping = imageViewForCropping;
+    }
+    return _imageViewForCropping;
 }
 
 - (NSArray *)toolCellInfos
@@ -149,7 +178,7 @@
     UIEdgeInsets contentInsets = scrollView.contentInset;
     
     boundsSize.width = boundsSize.width - contentInsets.left - contentInsets.right;
-    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom ;//- self.toolsView.bounds.size.height;
+    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom ;
     
     if (frameToCenter.size.width < boundsSize.width) {
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2.0;
@@ -215,27 +244,8 @@
 #pragma mark - Cropping
 - (void)croppingAction
 {
-//    self.imageScrollView.zoomScale = 1;// self.imageScrollView.minimumZoomScale;
-    [self resizeImage];
-    self.allowZooming = NO;
-    self.imageScrollView.scrollEnabled = NO;
-    self.imageScrollView.zoomScale = 1;
-    
-    NSLog(@"asfas: %@", NSStringFromCGRect(self.imageView.bounds));
-    NSLog(@"Scale: %f", self.imageView.image.scale);
-    [self.imageView beginCroppingWithCroppingRect:CGRectZero];
-}
-
-- (void)resizeImage
-{
-    
-    CGRect bounds = self.imageScrollView.bounds;
-    CGFloat xScale = bounds.size.width / self.image.size.width;
-    CGFloat yScale = bounds.size.height / self.image.size.height;
-    
-    CGFloat minScale = MIN(xScale, yScale);
-    self.imageView.frame = CGRectMake(0, 0, self.image.size.width * minScale, self.image.size.height * minScale);
-    self.imageScrollView.zoomScale = 1;
+    [self.imageScrollView removeFromSuperview];
+    [self.imageViewForCropping beginCroppingWithCroppingRect:CGRectZero];
 }
 
 /*
