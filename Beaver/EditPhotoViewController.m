@@ -12,12 +12,14 @@
 #import "ToolCell.h"
 #import "ToolCellInfo.h"
 
+#import "UIImageView+Cropping.h"
+
 
 @interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
-@property (nonatomic) BOOL needUpdateUI;
+@property (nonatomic) BOOL allowZooming;
 
 @property (strong, nonatomic) NSArray *toolCellInfos;
 
@@ -38,11 +40,6 @@
     self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     
     [self configureImageScrollView];
-    if (self.view.window) {
-        [self updateUI];
-    } else {
-        self.needUpdateUI = YES;
-    }
 }
 
 - (UIImage *)image
@@ -85,6 +82,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.allowZooming = YES;
     [self.imageScrollView addSubview:self.imageView];
     self.toolsView.backgroundColor = [UIColor clearColor];
 }
@@ -92,16 +90,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.needUpdateUI) {
-        [self updateUI];
-        self.needUpdateUI = NO;
-    }
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     [self updateScrollViewContentInsets];
+    [self centeredFrame:self.imageView forScrollView:self.imageScrollView];
 }
 
 
@@ -109,7 +104,7 @@
 
 - (void)updateUI
 {
-    [self centeredFrame:self.imageView forScrollView:self.imageScrollView];
+
 }
 
 // 设置scrollView的contentInsets
@@ -120,6 +115,10 @@
     insets.bottom = self.toolsView.bounds.size.height;
     if (!UIEdgeInsetsEqualToEdgeInsets(insets, self.imageScrollView.contentInset)) {
         self.imageScrollView.contentInset = insets;
+        CGSize contentSize = self.imageScrollView.contentSize;
+        contentSize.width -= insets.left + insets.right;
+        contentSize.height -= insets.top + insets.bottom;
+        self.imageScrollView.contentSize = contentSize;
     }
 }
 
@@ -136,6 +135,7 @@
         self.imageScrollView.maximumZoomScale = maxScale;
         self.imageScrollView.zoomScale = minScale;
         self.imageScrollView.contentSize = self.imageScrollView.bounds.size;
+        NSLog(@"bound size: %@", NSStringFromCGSize(self.imageScrollView.bounds.size));
     }
 }
 
@@ -146,7 +146,7 @@
     UIEdgeInsets contentInsets = scrollView.contentInset;
     
     boundsSize.width = boundsSize.width - contentInsets.left - contentInsets.right;
-    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom - self.toolsView.bounds.size.height;
+    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom ;//- self.toolsView.bounds.size.height;
     
     if (frameToCenter.size.width < boundsSize.width) {
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2.0;
@@ -166,7 +166,7 @@
 #pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return self.imageView;
+    return self.allowZooming ? self.imageView : nil;
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
@@ -213,6 +213,11 @@
 - (void)croppingAction
 {
     NSLog(@"crop");
+    NSLog(@"contentSize: %@", NSStringFromCGSize(self.imageScrollView.contentSize));
+//    self.imageScrollView.z, oomScale = self.imageScrollView.minimumZoomScale;
+    self.allowZooming = NO;
+    
+    [self.imageView beginCroppingWithCroppingRect:CGRectZero];
 }
 
 /*

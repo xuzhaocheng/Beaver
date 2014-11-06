@@ -18,6 +18,7 @@
 		6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */; };
 		6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452161A0A2F45005F4CEF /* ToolCell.m */; };
 		6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */; };
+		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		6B2452161A0A2F45005F4CEF /* ToolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolCell.m; sourceTree = "<group>"; };
 		6B24521C1A0A57AE005F4CEF /* ToolCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolCellInfo.h; sourceTree = "<group>"; };
 		6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolCellInfo.m; sourceTree = "<group>"; };
+		6B24521F1A0B46CD005F4CEF /* UIImageView+Cropping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cropping.h"; sourceTree = "<group>"; };
+		6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cropping.m"; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +146,8 @@
 				6B691EB91A0939AC00931CF9 /* PhotoCell.m */,
 				6B2452151A0A2F45005F4CEF /* ToolCell.h */,
 				6B2452161A0A2F45005F4CEF /* ToolCell.m */,
+				6B24521F1A0B46CD005F4CEF /* UIImageView+Cropping.h */,
+				6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
+				6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */,
 				6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */,
 				6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */,
 				6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */,
