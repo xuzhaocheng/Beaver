@@ -11,6 +11,7 @@
 #import "EditPhotoViewController.h"
 #import "ToolCell.h"
 #import "ToolCellInfo.h"
+#import "CroppingPhotoViewController.h"
 #import "Logs.h"
 
 #import "UIImageView+Cropping.h"
@@ -241,16 +242,16 @@ typedef enum : NSUInteger {
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ToolCellInfo *toolCellInfo = self.toolCellInfos[indexPath.row];
-    
-    NSString *selectorName = [NSString stringWithFormat:@"%@%@Action", [[toolCellInfo.title substringToIndex:1] lowercaseString], [toolCellInfo.title substringFromIndex:1]];
-    
-    SEL selector = NSSelectorFromString(selectorName);
-    
-    // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
-    if ([self respondsToSelector:selector]) {
-        ((void (*)(id, SEL))[self methodForSelector:selector])(self, selector);
-    }
+//    ToolCellInfo *toolCellInfo = self.toolCellInfos[indexPath.row];
+//    
+//    NSString *selectorName = [NSString stringWithFormat:@"%@%@Action", [[toolCellInfo.title substringToIndex:1] lowercaseString], [toolCellInfo.title substringFromIndex:1]];
+//    
+//    SEL selector = NSSelectorFromString(selectorName);
+//    
+//    // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+//    if ([self respondsToSelector:selector]) {
+//        ((void (*)(id, SEL))[self methodForSelector:selector])(self, selector);
+//    }
 }
 
 
@@ -267,12 +268,16 @@ typedef enum : NSUInteger {
     [self.navigationItem setRightBarButtonItem:self.rightBarButtonItem animated:YES];
 }
 
+- (IBAction)done:(UIStoryboardSegue *)sender
+{
+    
+}
+
 - (void)applyCropping
 {
     UIImage *croppedImage = [self.imageViewForCropping cropInVisiableRect];
     
     [self.imageViewForCropping removeFromSuperview];
-    
     self.imageViewForCropping = nil;
     
     self.image = croppedImage;
@@ -298,14 +303,18 @@ typedef enum : NSUInteger {
 
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Cropping Photo"]) {
+        CroppingPhotoViewController *cpvc = (CroppingPhotoViewController *)segue.destinationViewController;
+        cpvc.image = self.image;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

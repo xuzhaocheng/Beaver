@@ -21,6 +21,8 @@
 		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 		6BE9A9F51A0C74B600EB2DE8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */; };
+		6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */; };
+		6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,10 @@
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6BE9A9F61A0CFB5600EB2DE8 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
+		6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
+		6BE9AA031A0CFDD400EB2DE8 /* CroppingPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CroppingPhotoViewController.h; sourceTree = "<group>"; };
+		6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CroppingPhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +109,9 @@
 		6B2451AE1A0908AA005F4CEF /* Beaver */ = {
 			isa = PBXGroup;
 			children = (
-				6B2452181A0A4402005F4CEF /* Models */,
 				6B2451DA1A091517005F4CEF /* App Delegate */,
+				6BE9A9F91A0CFC4200EB2DE8 /* Segues */,
+				6B2452181A0A4402005F4CEF /* Models */,
 				6B2451D91A091505005F4CEF /* Controllers */,
 				6B2451D81A0914FB005F4CEF /* Views */,
 				6B2451DB1A09152C005F4CEF /* Core Data Models */,
@@ -163,6 +170,8 @@
 				6B2451BA1A0908AA005F4CEF /* MainViewController.m */,
 				6B2451DD1A09D010005F4CEF /* EditPhotoViewController.h */,
 				6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */,
+				6BE9AA031A0CFDD400EB2DE8 /* CroppingPhotoViewController.h */,
+				6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -191,6 +200,15 @@
 				6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6BE9A9F91A0CFC4200EB2DE8 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				6BE9A9F61A0CFB5600EB2DE8 /* NoAnimationSegue.h */,
+				6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */,
+			);
+			name = Segues;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,12 +314,14 @@
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
 				6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */,
 				6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */,
+				6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */,
 				6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */,
 				6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */,
 				6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */,
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,
+				6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
