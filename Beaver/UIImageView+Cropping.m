@@ -7,6 +7,7 @@
 //
 
 #import <objc/runtime.h>
+#import <AVFoundation/AVUtilities.h>
 #import "UIImageView+Cropping.h"
 #import "Logs.h"
 
@@ -132,6 +133,8 @@
 }
 
 
+#pragma mark - Initialization
+
 - (id)initWithFrame:(CGRect)frame cropRect:(CGRect)rect
 {
     self = [super initWithFrame:frame];
@@ -175,6 +178,9 @@
                                             self.bottomLeftView.frame.size.height);
 }
 
+
+#pragma mark - Drawing
+
 - (void)updateUI
 {
     [self setViewsFrame];
@@ -210,7 +216,6 @@
     [path moveToPoint:c];
     [path addLineToPoint:d];
     
-    
     [path stroke];
 }
 
@@ -230,7 +235,15 @@ static CGPoint LastMovePoint;
 
 @implementation UIImageView (Cropping)
 
-@dynamic croppingMaskView, moveStyle;
+@dynamic croppingMaskView, cropping;
+
+
+#pragma mark - Properties
+
+- (BOOL)isCropping
+{
+    return self.croppingMaskView.superview ? YES : NO;
+}
 
 - (CroppingMaskView *)croppingMaskView
 {
@@ -264,7 +277,17 @@ static CGPoint LastMovePoint;
 
 - (UIImage *)cropInVisiableRect
 {
-    return nil;
+    CGRect rect = self.croppingMaskView.cropRect;
+
+    CGFloat scale = self.image.size.width / self.bounds.size.width;
+    rect.origin.x *= scale;
+    rect.origin.y *= scale;
+    rect.size.width *= scale;
+    rect.size.height *= scale;
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([self.image CGImage], rect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef];
+    return croppedImage;
 }
 
 

@@ -15,18 +15,24 @@
 
 #import "UIImageView+Cropping.h"
 
+typedef enum : NSUInteger {
+    EditTypeCropping,
+} EditType;
+
 
 @interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
-
+@property (strong, nonatomic) UIBarButtonItem *rightBarButtonItem;
 @property (strong, nonatomic) UIImageView *imageViewForCropping;
+
+@property (nonatomic) EditType editType;
 @property (nonatomic) BOOL allowZooming;
 
 @property (strong, nonatomic) NSArray *toolCellInfos;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UICollectionView *toolsView;
 
 @end
@@ -39,9 +45,11 @@
 
 - (void)setImage:(UIImage *)image
 {
+    self.imageScrollView.zoomScale = 1.f;
     self.imageView.image = image;
     self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    [self configureImageScrollView];
+    
+    if (self.imageScrollView) [self updateImageScrollView];
 }
 
 - (UIImage *)image
@@ -49,19 +57,23 @@
     return self.imageView.image;
 }
 
-- (void)setImageScrollView:(UIScrollView *)imageScrollView
-{
-    _imageScrollView = imageScrollView;
-    [self configureImageScrollView];
-}
-
 - (UIImageView *)imageView
 {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;
+}
+
+- (UIBarButtonItem *)rightBarButtonItem
+{
+    if (!_rightBarButtonItem) {
+        _rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"应用"
+                                                               style:UIBarButtonItemStyleBordered
+                                                              target:self
+                                                              action:@selector(applyAction)];
+    }
+    return _rightBarButtonItem;
 }
 
 - (void)setPhotoAsset:(ALAsset *)photoAsset
@@ -113,9 +125,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.allowZooming = YES;
-    [self.imageScrollView addSubview:self.imageView];
     self.toolsView.backgroundColor = [UIColor clearColor];
+    
+    [self setScrollViewContentInsets];
+    [self updateImageScrollView];
+    [self.imageScrollView addSubview:self.imageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,10 +139,9 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidLayoutSubviews
+- (void)viewWillLayoutSubviews
 {
-    [super viewDidLayoutSubviews];
-    [self updateScrollViewContentInsets];
+    [super viewWillLayoutSubviews];
     [self centeredFrame:self.imageView forScrollView:self.imageScrollView];
 }
 
@@ -139,11 +154,14 @@
 }
 
 // 设置scrollView的contentInsets
-- (void)updateScrollViewContentInsets
+- (void)setScrollViewContentInsets
 {
     UIEdgeInsets insets = self.imageScrollView.contentInset;
     
-    insets.bottom = self.toolsView.bounds.size.height;
+    insets.bottom = self.toolsView.bounds.size.height + EDGE_PADDING;
+    insets.top += EDGE_PADDING;
+    insets.left = insets.right = EDGE_PADDING;
+    
     if (!UIEdgeInsetsEqualToEdgeInsets(insets, self.imageScrollView.contentInset)) {
         self.imageScrollView.contentInset = insets;
         CGSize contentSize = self.imageScrollView.contentSize;
@@ -153,22 +171,21 @@
     }
 }
 
-- (void)configureImageScrollView
+- (void)updateImageScrollView
 {
-    if (self.imageScrollView) {
-        CGRect bounds = self.imageScrollView.bounds;
-        CGFloat xScale = bounds.size.width / self.image.size.width;
-        CGFloat yScale = bounds.size.height / self.image.size.height;
-        
-        CGFloat minScale = MIN(xScale, yScale);
-        CGFloat maxScale = 3;
-        self.imageScrollView.minimumZoomScale = minScale;
-        self.imageScrollView.maximumZoomScale = maxScale;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageScrollView.zoomScale = minScale;
-        });
-        self.imageScrollView.contentSize = self.imageScrollView.bounds.size;
-    }
+    CGRect bounds = self.imageScrollView.bounds;
+    bounds.size.width -= self.imageScrollView.contentInset.left + self.imageScrollView.contentInset.right;
+    
+    CGFloat xScale = bounds.size.width / self.image.size.width;
+    CGFloat yScale = bounds.size.height / self.image.size.height;
+    CGFloat minScale = MIN(xScale, yScale);
+    CGFloat maxScale = 3;
+    
+    self.imageScrollView.minimumZoomScale = minScale;
+    self.imageScrollView.maximumZoomScale = maxScale;
+
+    self.imageScrollView.zoomScale = minScale;
+
 }
 
 - (void)centeredFrame:(UIView *)view forScrollView:(UIScrollView *)scrollView
@@ -244,9 +261,42 @@
 #pragma mark - Cropping
 - (void)croppingAction
 {
-    [self.imageScrollView removeFromSuperview];
+    self.editType = EditTypeCropping;
+    self.imageScrollView.hidden = YES;
     [self.imageViewForCropping beginCroppingWithCroppingRect:CGRectZero];
+    [self.navigationItem setRightBarButtonItem:self.rightBarButtonItem animated:YES];
 }
+
+- (void)applyCropping
+{
+    UIImage *croppedImage = [self.imageViewForCropping cropInVisiableRect];
+    
+    [self.imageViewForCropping removeFromSuperview];
+    
+    self.imageViewForCropping = nil;
+    
+    self.image = croppedImage;
+    self.imageScrollView.hidden = NO;
+}
+
+
+- (void)applyAction
+{
+    switch (self.editType) {
+        case EditTypeCropping:
+            [self applyCropping];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self.navigationItem setRightBarButtonItem:nil animated:YES];
+}
+
+
+
+
 
 /*
 #pragma mark - Navigation

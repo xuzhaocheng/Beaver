@@ -29,7 +29,7 @@ typedef NS_OPTIONS(NSInteger, MoveStyle) {
 @interface UIImageView (Cropping)
 
 @property (nonatomic, strong, readonly) CroppingMaskView *croppingMaskView;
-@property (nonatomic) MoveStyle moveStyle;
+@property (nonatomic, readonly, getter=isCropping) BOOL cropping;
 
 - (void)beginCroppingWithCroppingRect:(CGRect)frame;
 - (UIImage *)cropInVisiableRect;
