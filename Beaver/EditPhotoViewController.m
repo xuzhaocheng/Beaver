@@ -80,8 +80,6 @@
 }
 
 
-
-
 - (NSArray *)toolCellInfos
 {
     if (!_toolCellInfos) {
@@ -227,10 +225,7 @@
     self.image = image;
 }
 
-- (IBAction)done:(UIStoryboardSegue *)sender
-{
-    
-}
+
 
 
 
@@ -241,13 +236,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Cropping Photo"]) {
-        
         CroppingPhotoViewController *cpvc = (CroppingPhotoViewController *)[segue.destinationViewController topViewController];
         cpvc.image = self.image;
         cpvc.delegate = self;
     }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 

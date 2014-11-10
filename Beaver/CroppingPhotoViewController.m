@@ -14,7 +14,6 @@
 @interface CroppingPhotoViewController ()
 
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
 
 @end
 
@@ -29,17 +28,6 @@
 - (UIImage *)image
 {
     return self.imageView.image;
-}
-
-- (UIBarButtonItem *)rightBarButtonItem
-{
-    if (!_rightBarButtonItem) {
-        _rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Apply"
-                                                               style:UIBarButtonItemStyleBordered
-                                                              target:self
-                                                              action:@selector(applyCropping)];
-    }
-    return _rightBarButtonItem;
 }
 
 #define PADDING 10.f
@@ -58,7 +46,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Crop Photo";
-//    self.navigationItem.rightBarButtonItem = self.rightBarButtonItem;
     [self.view addSubview:self.imageView];
 }
 
