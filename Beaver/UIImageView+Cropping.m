@@ -269,7 +269,7 @@ static CGPoint LastMovePoint;
     if (!self.croppingMaskView) {
         CroppingMaskView *view = [[CroppingMaskView alloc] initWithFrame:self.bounds
                                                                 cropRect:CGRectMake(0, 0, self.bounds.size.width / 2, self.bounds.size.height / 2)];
-        NSLog(@"%@", NSStringFromCGRect(self.bounds));
+        DLog(@"%@", NSStringFromCGRect(self.bounds));
         self.croppingMaskView = view;
         [self addSubview:view];
     }
@@ -416,32 +416,31 @@ static CGPoint LastMovePoint;
 - (void)centerMoveWithLocation:(CGPoint)location
 {
     CGRect cropRect = self.croppingMaskView.cropRect;
-    if (!CGRectContainsPoint(self.croppingMaskView.bounds, location)) {
-        if (location.x < self.croppingMaskView.bounds.origin.x) {
-            cropRect.origin.x = 0;
-        }
-        
-        if (location.x > self.croppingMaskView.bounds.origin.x + self.croppingMaskView.bounds.size.width) {
-            cropRect.origin.x = self.croppingMaskView.bounds.size.width - cropRect.size.width;
-        }
-        
-        if (location.y < self.croppingMaskView.bounds.origin.y) {
-            cropRect.origin.y = 0;
-        }
-        
-        if (location.y > self.bounds.origin.y + self.bounds.size.height) {
-            cropRect.origin.y = self.croppingMaskView.bounds.size.height - cropRect.size.height;
-        }
-        [self.croppingMaskView setCropRect:cropRect];
-        return;
-    }
-    
     
     CGFloat deltaX = location.x - LastMovePoint.x;
     CGFloat deltaY = location.y - LastMovePoint.y;
     
     cropRect.origin.x += deltaX;
     cropRect.origin.y += deltaY;
+    
+    // 调整剪裁框超出图片范围的情况
+    if (location.x < self.croppingMaskView.bounds.origin.x) {
+        cropRect.origin.x = 0;
+    }
+    
+    if (location.x > self.croppingMaskView.bounds.origin.x + self.croppingMaskView.bounds.size.width) {
+        cropRect.origin.x = self.croppingMaskView.bounds.size.width - cropRect.size.width;
+    }
+    
+    if (location.y < self.croppingMaskView.bounds.origin.y) {
+        cropRect.origin.y = 0;
+    }
+    
+    if (location.y > self.bounds.origin.y + self.bounds.size.height) {
+        cropRect.origin.y = self.croppingMaskView.bounds.size.height - cropRect.size.height;
+    }
+    
+    
     [self.croppingMaskView setCropRect:cropRect];
 }
 

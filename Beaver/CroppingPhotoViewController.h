@@ -11,10 +11,11 @@
 @class CroppingPhotoViewController;
 
 @protocol CroppingPhotoDelegate <NSObject>
-- (UIImage *)didCroppingViewInCropRect;
+- (void)didCroppingViewInCropRect:(UIImage *)image;
 
 @end
 
 @interface CroppingPhotoViewController : UIViewController
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, weak) id <CroppingPhotoDelegate> delegate;
 @end

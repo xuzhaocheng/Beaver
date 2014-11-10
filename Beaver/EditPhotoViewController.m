@@ -16,19 +16,14 @@
 
 #import "UIImageView+Cropping.h"
 
-typedef enum : NSUInteger {
-    EditTypeCropping,
-} EditType;
 
 
-@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, CroppingPhotoDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIBarButtonItem *rightBarButtonItem;
-@property (strong, nonatomic) UIImageView *imageViewForCropping;
 
-@property (nonatomic) EditType editType;
 @property (nonatomic) BOOL allowZooming;
 
 @property (strong, nonatomic) NSArray *toolCellInfos;
@@ -72,7 +67,7 @@ typedef enum : NSUInteger {
         _rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"应用"
                                                                style:UIBarButtonItemStyleBordered
                                                               target:self
-                                                              action:@selector(applyAction)];
+                                                              action:nil];
     }
     return _rightBarButtonItem;
 }
@@ -85,31 +80,7 @@ typedef enum : NSUInteger {
 }
 
 
-#define EDGE_PADDING    10.f
-- (UIImageView *)imageViewForCropping
-{
-    if (!_imageViewForCropping) {
-        UIImageView *imageViewForCropping = [[UIImageView alloc] init];
-        CGRect bounds = self.imageScrollView.bounds;
-        
-        bounds.size.width -= EDGE_PADDING * 2;
-        bounds.size.height -= EDGE_PADDING * 2;
-        
-        CGFloat xScale = bounds.size.width / self.image.size.width;
-        CGFloat yScale = bounds.size.height / self.image.size.height;
-        self.view.backgroundColor = [UIColor blackColor];
-        CGFloat minScale = MIN(xScale, yScale);
-        
-        imageViewForCropping.image = self.image;
-        imageViewForCropping.frame = CGRectMake(0, 0, self.image.size.width * minScale, self.image.size.height * minScale);
-        imageViewForCropping.center = CGPointMake(self.view.bounds.size.width / 2,
-                                                  (self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height) / 2);
-        
-        [self.view addSubview:imageViewForCropping];
-        _imageViewForCropping = imageViewForCropping;
-    }
-    return _imageViewForCropping;
-}
+
 
 - (NSArray *)toolCellInfos
 {
@@ -155,6 +126,7 @@ typedef enum : NSUInteger {
 }
 
 // 设置scrollView的contentInsets
+#define EDGE_PADDING    10.f
 - (void)setScrollViewContentInsets
 {
     UIEdgeInsets insets = self.imageScrollView.contentInset;
@@ -239,21 +211,6 @@ typedef enum : NSUInteger {
     return cell;
 }
 
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    ToolCellInfo *toolCellInfo = self.toolCellInfos[indexPath.row];
-//    
-//    NSString *selectorName = [NSString stringWithFormat:@"%@%@Action", [[toolCellInfo.title substringToIndex:1] lowercaseString], [toolCellInfo.title substringFromIndex:1]];
-//    
-//    SEL selector = NSSelectorFromString(selectorName);
-//    
-//    // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
-//    if ([self respondsToSelector:selector]) {
-//        ((void (*)(id, SEL))[self methodForSelector:selector])(self, selector);
-//    }
-}
-
 
 #pragma mark -
 #pragma mark - Photo Editor
@@ -262,43 +219,18 @@ typedef enum : NSUInteger {
 #pragma mark - Cropping
 - (void)croppingAction
 {
-    self.editType = EditTypeCropping;
-    self.imageScrollView.hidden = YES;
-    [self.imageViewForCropping beginCroppingWithCroppingRect:CGRectZero];
     [self.navigationItem setRightBarButtonItem:self.rightBarButtonItem animated:YES];
+}
+
+- (void)didCroppingViewInCropRect:(UIImage *)image
+{
+    self.image = image;
 }
 
 - (IBAction)done:(UIStoryboardSegue *)sender
 {
     
 }
-
-- (void)applyCropping
-{
-    UIImage *croppedImage = [self.imageViewForCropping cropInVisiableRect];
-    
-    [self.imageViewForCropping removeFromSuperview];
-    self.imageViewForCropping = nil;
-    
-    self.image = croppedImage;
-    self.imageScrollView.hidden = NO;
-}
-
-
-- (void)applyAction
-{
-    switch (self.editType) {
-        case EditTypeCropping:
-            [self applyCropping];
-            break;
-            
-        default:
-            break;
-    }
-    
-    [self.navigationItem setRightBarButtonItem:nil animated:YES];
-}
-
 
 
 
@@ -309,8 +241,10 @@ typedef enum : NSUInteger {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Cropping Photo"]) {
-        CroppingPhotoViewController *cpvc = (CroppingPhotoViewController *)segue.destinationViewController;
+        
+        CroppingPhotoViewController *cpvc = (CroppingPhotoViewController *)[segue.destinationViewController topViewController];
         cpvc.image = self.image;
+        cpvc.delegate = self;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -9,8 +10,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="vL8-Qs-RNd"/>
+                        <viewControllerLayoutGuide type="bottom" id="907-IU-uAR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -18,7 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZUT-uD-piK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6BI-r9-OLx">
                                     <size key="itemSize" width="90" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -62,32 +63,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="426"/>
+            <point key="canvasLocation" x="939" y="425.99999999999994"/>
         </scene>
         <!--Edit Photo-->
         <scene sceneID="Gbu-k2-Zlp">
             <objects>
                 <viewController id="AIM-N5-QGL" customClass="EditPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uYT-UG-Fce"/>
-                        <viewControllerLayoutGuide type="bottom" id="nuY-pg-jFJ"/>
+                        <viewControllerLayoutGuide type="top" id="kS3-Ai-uCC"/>
+                        <viewControllerLayoutGuide type="bottom" id="fot-rj-2el"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rce-F5-X3f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-PD-RCN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-PD-RCN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="AIM-N5-QGL" id="Qnc-Qq-xAA"/>
                                 </connections>
                             </scrollView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-KI-PXi">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-KI-PXi">
                                 <rect key="frame" x="0.0" y="488" width="320" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="hxa-Ac-8ey"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="15" id="0av-F7-qnd">
                                     <size key="itemSize" width="50" height="68"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -118,7 +116,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="HpH-Sb-JUC" id="jti-Oa-u3R"/>
                                             <outlet property="titleLabel" destination="YsP-Ci-eoD" id="0xp-J4-pm3"/>
-                                            <segue destination="drL-ET-nCH" kind="show" identifier="Cropping Photo" id="ec3-FI-HpT"/>
+                                            <segue destination="YtP-Mj-0CT" kind="presentation" identifier="Cropping Photo" animates="NO" id="ec3-FI-HpT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -129,15 +127,6 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Rdy-PD-RCN" secondAttribute="bottom" id="2dk-HN-ymt"/>
-                            <constraint firstItem="Rdy-PD-RCN" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="Aga-s4-VUb"/>
-                            <constraint firstItem="Rdy-PD-RCN" firstAttribute="top" secondItem="Rce-F5-X3f" secondAttribute="top" id="EYs-Vf-bi7"/>
-                            <constraint firstItem="Jv6-KI-PXi" firstAttribute="leading" secondItem="Rce-F5-X3f" secondAttribute="leading" id="Piq-2B-vER"/>
-                            <constraint firstAttribute="trailing" secondItem="Jv6-KI-PXi" secondAttribute="trailing" id="kD0-8U-dbR"/>
-                            <constraint firstAttribute="trailing" secondItem="Rdy-PD-RCN" secondAttribute="trailing" id="qSd-q4-xbY"/>
-                            <constraint firstAttribute="bottom" secondItem="Jv6-KI-PXi" secondAttribute="bottom" id="sfB-CU-y0T"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Photo" id="hRH-pm-MIt">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Mo-vQ-HIG">
@@ -156,27 +145,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GC7-iC-3m6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1792" y="426"/>
+            <point key="canvasLocation" x="1792" y="425.99999999999994"/>
         </scene>
-        <!--Cropping Photo View Controller-->
+        <!--Crop Photo-->
         <scene sceneID="4GN-Ty-wtG">
             <objects>
                 <viewController id="drL-ET-nCH" customClass="CroppingPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wx2-9d-seK"/>
-                        <viewControllerLayoutGuide type="bottom" id="BAl-zK-qDi"/>
+                        <viewControllerLayoutGuide type="top" id="dvk-Wb-gxY"/>
+                        <viewControllerLayoutGuide type="bottom" id="O55-fh-Inz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0x6-Lr-E1n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="F7X-WK-fPe" appends="YES" id="CO8-KI-Kdc"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="vmH-WH-Iez"/>
+                    <navigationItem key="navigationItem" title="Crop Photo" id="vmH-WH-Iez">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="voe-i6-huA">
+                            <connections>
+                                <action selector="cancelAction" destination="drL-ET-nCH" id="gJZ-cV-HNa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="NOl-2s-922">
+                            <connections>
+                                <action selector="cropping:" destination="drL-ET-nCH" id="Gkr-YW-mx1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4N-Cn-Nks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="F7X-WK-fPe">
+                    <connections>
+                        <action selector="tap:" destination="drL-ET-nCH" id="ZsW-9I-2Mf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2268" y="426"/>
+            <point key="canvasLocation" x="2800" y="425"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mTd-Rf-ueu">
@@ -195,7 +204,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbf-CP-bYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="510" y="426"/>
+            <point key="canvasLocation" x="510" y="425.99999999999994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Id0-Ap-eMf">
@@ -213,7 +222,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbQ-0R-Ltd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1368" y="426"/>
+            <point key="canvasLocation" x="1368" y="425.99999999999994"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q6i-OA-BOJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YtP-Mj-0CT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7xW-PW-tQC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="drL-ET-nCH" kind="relationship" relationship="rootViewController" id="NbP-Og-9QO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b1K-l0-I0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2268" y="425"/>
         </scene>
     </scenes>
 </document>
