@@ -18,7 +18,7 @@
 
 
 
-@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, CroppingPhotoDelegate>
+@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, CroppingPhotoDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
@@ -84,7 +84,8 @@
 {
     if (!_toolCellInfos) {
         NSMutableArray *aMutableArray = [[NSMutableArray alloc] init];
-        [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Cropping" icon:@""]];
+        [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Crop" icon:@""]];
+        [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Tune" icon:@""]];
         _toolCellInfos = aMutableArray;
     }
     return _toolCellInfos;
@@ -209,6 +210,14 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ToolCellInfo *cellInfo = self.toolCellInfos[indexPath.row];
+    [self performSegueWithIdentifier:[NSString stringWithFormat:@"%@ Photo", cellInfo.title]
+                              sender:[collectionView cellForItemAtIndexPath:indexPath]];
+}
+
 
 #pragma mark -
 #pragma mark - Photo Editor
@@ -235,7 +244,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Cropping Photo"]) {
+    if ([segue.identifier isEqualToString:@"Crop Photo"]) {
         CroppingPhotoViewController *cpvc = (CroppingPhotoViewController *)[segue.destinationViewController topViewController];
         cpvc.image = self.image;
         cpvc.delegate = self;

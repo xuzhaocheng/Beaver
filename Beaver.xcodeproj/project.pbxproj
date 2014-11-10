@@ -20,6 +20,7 @@
 		6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */; };
 		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
+		6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D41A109D2A007F549D /* TunePhotoViewController.m */; };
 		6BE9A9F51A0C74B600EB2DE8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */; };
 		6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */; };
 		6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */; };
@@ -61,6 +62,8 @@
 		6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cropping.m"; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		6BA831D31A109D2A007F549D /* TunePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunePhotoViewController.h; sourceTree = "<group>"; };
+		6BA831D41A109D2A007F549D /* TunePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TunePhotoViewController.m; sourceTree = "<group>"; };
 		6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6BE9A9F61A0CFB5600EB2DE8 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */,
 				6BE9AA031A0CFDD400EB2DE8 /* CroppingPhotoViewController.h */,
 				6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */,
+				6BA831D31A109D2A007F549D /* TunePhotoViewController.h */,
+				6BA831D41A109D2A007F549D /* TunePhotoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
+				6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */,
 				6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */,
 				6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */,
 				6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */,

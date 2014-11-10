@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -115,7 +116,6 @@
                                         <connections>
                                             <outlet property="imageView" destination="HpH-Sb-JUC" id="jti-Oa-u3R"/>
                                             <outlet property="titleLabel" destination="YsP-Ci-eoD" id="0xp-J4-pm3"/>
-                                            <segue destination="YtP-Mj-0CT" kind="presentation" identifier="Cropping Photo" animates="NO" id="ec3-FI-HpT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -139,6 +139,8 @@
                     <connections>
                         <outlet property="imageScrollView" destination="Rdy-PD-RCN" id="Xgl-Ka-ibq"/>
                         <outlet property="toolsView" destination="Jv6-KI-PXi" id="d0D-Ii-n9a"/>
+                        <segue destination="YtP-Mj-0CT" kind="presentation" identifier="Crop Photo" animates="NO" id="XuG-gE-crt"/>
+                        <segue destination="YOO-gH-TJj" kind="presentation" identifier="Tune Photo" animates="NO" id="vTi-On-p1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,7 +186,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2800" y="425"/>
+            <point key="canvasLocation" x="2743" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mTd-Rf-ueu">
@@ -239,7 +241,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1K-l0-I0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2268" y="425"/>
+            <point key="canvasLocation" x="2282" y="136"/>
+        </scene>
+        <!--Tune Photo View Controller-->
+        <scene sceneID="xnL-1W-wUp">
+            <objects>
+                <viewController id="MkM-RZ-s57" customClass="TunePhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wQ1-9d-KQt"/>
+                        <viewControllerLayoutGuide type="bottom" id="cpx-SK-0tZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M7N-A4-tuh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oEO-Ay-lsU"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UBV-eh-gbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2814" y="777"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CLK-P9-zsj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YOO-gH-TJj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Xp-b6-0Ah">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MkM-RZ-s57" kind="relationship" relationship="rootViewController" id="FGn-V2-2WP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9n-qI-4DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2282" y="777"/>
         </scene>
     </scenes>
 </document>
