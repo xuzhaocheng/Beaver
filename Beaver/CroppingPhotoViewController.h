@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditBaseViewController.h"
 
 @class CroppingPhotoViewController;
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface CroppingPhotoViewController : UIViewController
+@interface CroppingPhotoViewController : EditBaseViewController
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, weak) id <CroppingPhotoDelegate> delegate;
 @end

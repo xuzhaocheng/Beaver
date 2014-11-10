@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -165,18 +164,7 @@
                             <outletCollection property="gestureRecognizers" destination="F7X-WK-fPe" appends="YES" id="CO8-KI-Kdc"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Crop Photo" id="vmH-WH-Iez">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="voe-i6-huA">
-                            <connections>
-                                <action selector="cancelAction" destination="drL-ET-nCH" id="gJZ-cV-HNa"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Apply" id="NOl-2s-922">
-                            <connections>
-                                <action selector="cropping:" destination="drL-ET-nCH" id="Gkr-YW-mx1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Crop Photo" id="vmH-WH-Iez"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4N-Cn-Nks" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -243,7 +231,7 @@
             </objects>
             <point key="canvasLocation" x="2282" y="136"/>
         </scene>
-        <!--Tune Photo View Controller-->
+        <!--Tune Photo-->
         <scene sceneID="xnL-1W-wUp">
             <objects>
                 <viewController id="MkM-RZ-s57" customClass="TunePhotoViewController" sceneMemberID="viewController">
@@ -254,14 +242,16 @@
                     <view key="view" contentMode="scaleToFill" id="M7N-A4-tuh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oEO-Ay-lsU"/>
+                    <navigationItem key="navigationItem" title="Tune Photo" id="oEO-Ay-lsU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DLJ-yu-tkj"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBV-eh-gbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2814" y="777"/>
+            <point key="canvasLocation" x="2743" y="777"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CLK-P9-zsj">

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditBaseViewController.h"
 
-@interface TunePhotoViewController : UIViewController
+@interface TunePhotoViewController : EditBaseViewController
 
 @end

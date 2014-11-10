@@ -21,6 +21,7 @@
 		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 		6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D41A109D2A007F549D /* TunePhotoViewController.m */; };
+		6BA831D91A10A4C2007F549D /* EditBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D81A10A4C2007F549D /* EditBaseViewController.m */; };
 		6BE9A9F51A0C74B600EB2DE8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */; };
 		6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */; };
 		6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */; };
@@ -64,6 +65,8 @@
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		6BA831D31A109D2A007F549D /* TunePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunePhotoViewController.h; sourceTree = "<group>"; };
 		6BA831D41A109D2A007F549D /* TunePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TunePhotoViewController.m; sourceTree = "<group>"; };
+		6BA831D71A10A4C2007F549D /* EditBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBaseViewController.h; sourceTree = "<group>"; };
+		6BA831D81A10A4C2007F549D /* EditBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBaseViewController.m; sourceTree = "<group>"; };
 		6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6BE9A9F61A0CFB5600EB2DE8 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
@@ -173,10 +176,7 @@
 				6B2451BA1A0908AA005F4CEF /* MainViewController.m */,
 				6B2451DD1A09D010005F4CEF /* EditPhotoViewController.h */,
 				6B2451DE1A09D010005F4CEF /* EditPhotoViewController.m */,
-				6BE9AA031A0CFDD400EB2DE8 /* CroppingPhotoViewController.h */,
-				6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */,
-				6BA831D31A109D2A007F549D /* TunePhotoViewController.h */,
-				6BA831D41A109D2A007F549D /* TunePhotoViewController.m */,
+				6BA831D61A10A4A6007F549D /* Photo Editors */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +205,27 @@
 				6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6BA831D61A10A4A6007F549D /* Photo Editors */ = {
+			isa = PBXGroup;
+			children = (
+				6BA831DA1A10A4C6007F549D /* BaseViewController */,
+				6BE9AA031A0CFDD400EB2DE8 /* CroppingPhotoViewController.h */,
+				6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */,
+				6BA831D31A109D2A007F549D /* TunePhotoViewController.h */,
+				6BA831D41A109D2A007F549D /* TunePhotoViewController.m */,
+			);
+			name = "Photo Editors";
+			sourceTree = "<group>";
+		};
+		6BA831DA1A10A4C6007F549D /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BA831D71A10A4C2007F549D /* EditBaseViewController.h */,
+				6BA831D81A10A4C2007F549D /* EditBaseViewController.m */,
+			);
+			name = BaseViewController;
 			sourceTree = "<group>";
 		};
 		6BE9A9F91A0CFC4200EB2DE8 /* Segues */ = {
@@ -324,6 +345,7 @@
 				6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */,
 				6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */,
 				6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */,
+				6BA831D91A10A4C2007F549D /* EditBaseViewController.m in Sources */,
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */,
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,

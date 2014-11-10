@@ -88,18 +88,14 @@
 }
 
 #pragma mark - Handle Actions
-- (IBAction)cancelAction
-{
-    [self dismissViewControllerAnimated:NO completion:NULL];
-}
-
-- (IBAction)cropping:(id)sender
+- (void)applyAction:(id)sender
 {
     UIImage *image = [self.imageView cropInVisiableRect];
     if ([self.delegate respondsToSelector:@selector(didCroppingViewInCropRect:)]) {
         [self.delegate didCroppingViewInCropRect:image];
     }
-    [self cancelAction];
+    [self dismissViewControllerAnimated:NO completion:NULL
+     ];
 }
 
 
