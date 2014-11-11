@@ -17,6 +17,5 @@
 @end
 
 @interface CroppingPhotoViewController : EditBaseViewController
-@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, weak) id <CroppingPhotoDelegate> delegate;
 @end

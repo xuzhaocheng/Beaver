@@ -12,6 +12,7 @@
 #import "ToolCell.h"
 #import "ToolCellInfo.h"
 #import "CroppingPhotoViewController.h"
+#import "TunePhotoViewController.h"
 #import "Logs.h"
 
 #import "UIImageView+Cropping.h"
@@ -166,8 +167,8 @@
     CGSize boundsSize = scrollView.bounds.size;
     UIEdgeInsets contentInsets = scrollView.contentInset;
     
-    boundsSize.width = boundsSize.width - contentInsets.left - contentInsets.right;
-    boundsSize.height = boundsSize.height - contentInsets.top - contentInsets.bottom ;
+    boundsSize.width -= contentInsets.left + contentInsets.right;
+    //    boundsSize.height -= contentInsets.top + contentInsets.bottom ;
     
     if (frameToCenter.size.width < boundsSize.width) {
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2.0;
@@ -176,12 +177,16 @@
     }
     
     if (frameToCenter.size.height < boundsSize.height) {
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2.0;
+        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2.0 - scrollView.contentInset.top;
+        if (frameToCenter.origin.y < 0) {
+            frameToCenter.origin.y = 0;
+        }
     } else {
         frameToCenter.origin.y = 0;
     }
     
     view.frame = frameToCenter;
+    DLog(@"view frame: %@", NSStringFromCGRect(frameToCenter));
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -236,9 +241,6 @@
 
 
 
-
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -248,6 +250,9 @@
         CroppingPhotoViewController *cpvc = (CroppingPhotoViewController *)[segue.destinationViewController topViewController];
         cpvc.image = self.image;
         cpvc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"Tune Photo"]) {
+        TunePhotoViewController *tpvc = (TunePhotoViewController *)[segue.destinationViewController topViewController];
+        tpvc.image = self.image;
     }
 }
 

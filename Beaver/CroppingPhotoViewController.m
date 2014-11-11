@@ -94,8 +94,7 @@
     if ([self.delegate respondsToSelector:@selector(didCroppingViewInCropRect:)]) {
         [self.delegate didCroppingViewInCropRect:image];
     }
-    [self dismissViewControllerAnimated:NO completion:NULL
-     ];
+    [self dismissViewControllerAnimated:NO completion:NULL];
 }
 
 

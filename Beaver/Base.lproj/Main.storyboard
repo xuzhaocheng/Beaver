@@ -242,12 +242,27 @@
                     <view key="view" contentMode="scaleToFill" id="M7N-A4-tuh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ep5-FM-0DJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <outlet property="delegate" destination="MkM-RZ-s57" id="VBg-Xc-rFL"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ep5-FM-0DJ" secondAttribute="trailing" id="ASd-PA-M7v"/>
+                            <constraint firstItem="ep5-FM-0DJ" firstAttribute="top" secondItem="M7N-A4-tuh" secondAttribute="top" id="iba-L5-uWu"/>
+                            <constraint firstItem="ep5-FM-0DJ" firstAttribute="leading" secondItem="M7N-A4-tuh" secondAttribute="leading" id="ish-AR-KQ0"/>
+                            <constraint firstAttribute="bottom" secondItem="ep5-FM-0DJ" secondAttribute="bottom" id="ma9-5X-DAi"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tune Photo" id="oEO-Ay-lsU">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DLJ-yu-tkj"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Tune Photo" id="oEO-Ay-lsU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="scrollView" destination="ep5-FM-0DJ" id="jlE-if-a4y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBV-eh-gbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
