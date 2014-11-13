@@ -249,6 +249,64 @@
                                     <outlet property="delegate" destination="MkM-RZ-s57" id="VBg-Xc-rFL"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wqs-EJ-THC">
+                                <rect key="frame" x="0.0" y="468" width="320" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JV-Le-Ua2">
+                                        <rect key="frame" x="8" y="62" width="46" height="30"/>
+                                        <state key="normal" title="亮度">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="brightnessButtonPressed:" destination="MkM-RZ-s57" eventType="touchUpInside" id="cm3-tS-dLO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxL-LJ-xGY">
+                                        <rect key="frame" x="88" y="62" width="54" height="30"/>
+                                        <state key="normal" title="对比度">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="contrastButtonPressed:" destination="MkM-RZ-s57" eventType="touchUpInside" id="k6e-eH-QxV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsr-U3-WEj">
+                                        <rect key="frame" x="258" y="60" width="54" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="饱和度"/>
+                                        <connections>
+                                            <action selector="saturationButtonPressed:" destination="MkM-RZ-s57" eventType="touchUpInside" id="huX-Ui-Cnv"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-6B-Ow5">
+                                        <rect key="frame" x="6" y="18" width="308" height="31"/>
+                                        <connections>
+                                            <action selector="sliderValueChanged:" destination="MkM-RZ-s57" eventType="valueChanged" id="SJp-rf-JZc"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IU5-fs-0Qg">
+                                        <state key="normal" title="对比度">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="contrastButtonPressed:" destination="MkM-RZ-s57" eventType="touchUpInside" id="YT6-bw-BDt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTC-Fg-bep">
+                                        <rect key="frame" x="177" y="62" width="46" height="30"/>
+                                        <state key="normal" title="色温">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="colorTemperatureButtonPressed:" destination="MkM-RZ-s57" eventType="touchUpInside" id="qlm-7y-OW1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -261,7 +319,12 @@
                     <navigationItem key="navigationItem" title="Tune Photo" id="oEO-Ay-lsU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="brightnessButton" destination="4JV-Le-Ua2" id="i91-5E-JaU"/>
+                        <outlet property="colorTemperatureButton" destination="WTC-Fg-bep" id="guB-QW-nLd"/>
+                        <outlet property="contrastButton" destination="yxL-LJ-xGY" id="zGi-dU-MTu"/>
+                        <outlet property="saturationButton" destination="Wsr-U3-WEj" id="LyZ-n9-sK0"/>
                         <outlet property="scrollView" destination="ep5-FM-0DJ" id="jlE-if-a4y"/>
+                        <outlet property="slider" destination="2Cy-6B-Ow5" id="Ls6-ah-hDO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBV-eh-gbn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,6 +19,7 @@
 		6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452161A0A2F45005F4CEF /* ToolCell.m */; };
 		6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */; };
 		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
+		6B4F93731A14C27600A6A619 /* UIButton+Rounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 		6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D41A109D2A007F549D /* TunePhotoViewController.m */; };
 		6BA831D91A10A4C2007F549D /* EditBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D81A10A4C2007F549D /* EditBaseViewController.m */; };
@@ -61,6 +62,8 @@
 		6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolCellInfo.m; sourceTree = "<group>"; };
 		6B24521F1A0B46CD005F4CEF /* UIImageView+Cropping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cropping.h"; sourceTree = "<group>"; };
 		6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cropping.m"; sourceTree = "<group>"; };
+		6B4F93711A14C27600A6A619 /* UIButton+Rounded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Rounded.h"; sourceTree = "<group>"; };
+		6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Rounded.m"; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		6BA831D31A109D2A007F549D /* TunePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunePhotoViewController.h; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 				6B2452181A0A4402005F4CEF /* Models */,
 				6B2451D91A091505005F4CEF /* Controllers */,
 				6B2451D81A0914FB005F4CEF /* Views */,
+				6B4F93741A14C2B800A6A619 /* Categories */,
 				6B2451DB1A09152C005F4CEF /* Core Data Models */,
 				6B2451BF1A0908AA005F4CEF /* Images.xcassets */,
 				6B2451AF1A0908AA005F4CEF /* Supporting Files */,
@@ -163,8 +167,6 @@
 				6B691EB91A0939AC00931CF9 /* PhotoCell.m */,
 				6B2452151A0A2F45005F4CEF /* ToolCell.h */,
 				6B2452161A0A2F45005F4CEF /* ToolCell.m */,
-				6B24521F1A0B46CD005F4CEF /* UIImageView+Cropping.h */,
-				6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -205,6 +207,17 @@
 				6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6B4F93741A14C2B800A6A619 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6B24521F1A0B46CD005F4CEF /* UIImageView+Cropping.h */,
+				6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */,
+				6B4F93711A14C27600A6A619 /* UIButton+Rounded.h */,
+				6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		6BA831D61A10A4A6007F549D /* Photo Editors */ = {
@@ -340,6 +353,7 @@
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
 				6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */,
 				6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */,
+				6B4F93731A14C27600A6A619 /* UIButton+Rounded.m in Sources */,
 				6B2451DF1A09D010005F4CEF /* EditPhotoViewController.m in Sources */,
 				6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */,
 				6B2452171A0A2F45005F4CEF /* ToolCell.m in Sources */,

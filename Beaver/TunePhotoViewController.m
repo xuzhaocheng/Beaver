@@ -7,12 +7,25 @@
 //
 
 #import "TunePhotoViewController.h"
+#import "UIButton+Rounded.h"
 
 #import "Logs.h"
 
 @interface TunePhotoViewController () <UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *brightnessButton;
+@property (weak, nonatomic) IBOutlet UIButton *contrastButton;
+@property (weak, nonatomic) IBOutlet UIButton *colorTemperatureButton;
+@property (weak, nonatomic) IBOutlet UIButton *saturationButton;
+
 @property (strong, nonatomic) UIImageView *imageView;
+
+@property (nonatomic) float brightness;
+@property (nonatomic) float contrast;
+@property (nonatomic) float colorTemperature;
+@property (nonatomic) float saturation;
+
 @end
 
 @implementation TunePhotoViewController
@@ -59,13 +72,18 @@
     
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.brightnessButton roundedWithCornerRadius:5.f];
+    [self.colorTemperatureButton roundedWithCornerRadius:5.f];
+    [self.saturationButton roundedWithCornerRadius:5.f];
+    [self.contrastButton roundedWithCornerRadius:5.f];
+    
     [self.scrollView addSubview:self.imageView];
 }
+
 
 - (void)viewWillLayoutSubviews
 {
@@ -127,6 +145,56 @@
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
     [self centerView:self.imageView inScrollView:scrollView];
+}
+
+#pragma mark - Actions
+- (IBAction)sliderValueChanged:(id)sender
+{
+    
+}
+
+- (IBAction)brightnessButtonPressed:(id)sender
+{
+    [self clearButtonsStates];
+    [self setButtonSelectedState:sender];
+}
+
+- (IBAction)contrastButtonPressed:(id)sender
+{
+    [self clearButtonsStates];
+    [self setButtonSelectedState:sender];
+}
+
+- (IBAction)colorTemperatureButtonPressed:(id)sender
+{
+    [self clearButtonsStates];
+    [self setButtonSelectedState:sender];
+}
+
+- (IBAction)saturationButtonPressed:(id)sender
+{
+    [self clearButtonsStates];
+    [self setButtonSelectedState:sender];
+}
+
+- (void)clearButtonsStates
+{
+    [self resetButtonState:self.brightnessButton];
+    [self resetButtonState:self.contrastButton];
+    [self resetButtonState:self.colorTemperatureButton];
+    [self resetButtonState:self.saturationButton];
+}
+
+- (void)resetButtonState: (UIButton *)button
+{
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor clearColor];
+}
+
+- (void)setButtonSelectedState: (UIButton *)button
+{
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor whiteColor];
 }
 
 
