@@ -8,6 +8,7 @@
 
 #import "TunePhotoViewController.h"
 #import "UIButton+Rounded.h"
+#import "UIImage+Scale.h"
 
 #import "Logs.h"
 
@@ -40,11 +41,8 @@
 - (void)setImage:(UIImage *)image
 {
     _image = image;
-    self.scrollView.zoomScale = 1.f;
-    self.imageView.image = image;
-    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     if (self.scrollView) {
-        [self setScrollViewMinAndMaxZoomScale];
+        [self ajustImageSize];
     }
 }
 
@@ -74,14 +72,13 @@
     insets.right += EDGE_PADDING;
     insets.bottom += EDGE_PADDING + 100.f;
     _scrollView.contentInset = insets;
-    _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width - EDGE_PADDING * 2, _scrollView.bounds.size.height - 2 * EDGE_PADDING);
 }
 
 - (CIFilter *)colorFilter
 {
     if (!_colorFilter) {
         _colorFilter = [CIFilter filterWithName:@"CIColorControls"];
-        CIImage *ciImg = [CIImage imageWithCGImage:[self.image CGImage]];
+        CIImage *ciImg = [CIImage imageWithCGImage:[self.imageView.image CGImage]];
         [_colorFilter setValue:ciImg forKey:kCIInputImageKey];
     }
     return _colorFilter;
@@ -122,23 +119,34 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    [self setScrollViewMinAndMaxZoomScale];
+   
+    CGSize boundsSize = self.scrollView.bounds.size;
+    boundsSize.height -= self.scrollView.contentInset.top + self.scrollView.contentInset.bottom;
+    boundsSize.width -= self.scrollView.contentInset.left + self.scrollView.contentInset.right;
+    self.scrollView.contentSize = boundsSize;
+    
+    [self ajustImageSize];
     [self centerView:self.imageView inScrollView:self.scrollView];
 }
 
-- (void)setScrollViewMinAndMaxZoomScale
+- (void)ajustImageSize
 {
     CGRect bounds = self.scrollView.bounds;
     bounds.size.width -= self.scrollView.contentInset.left + self.scrollView.contentInset.right;
     bounds.size.height -= self.scrollView.contentInset.top + self.scrollView.contentInset.bottom;
-    
+
     CGFloat xScale = bounds.size.width / self.image.size.width;
     CGFloat yScale = bounds.size.height / self.image.size.height;
     CGFloat minScale = MIN(xScale, yScale);
-
-    self.scrollView.minimumZoomScale = minScale;
-    self.scrollView.maximumZoomScale = 3.f;
-    self.scrollView.zoomScale = minScale;
+    
+    CGFloat scale = self.scrollView.zoomScale * minScale;
+    
+    UIImage *scaledImage = [self.image scaleWithScale:scale];
+    CGRect imageViewFrame = self.imageView.frame;
+    imageViewFrame.size = scaledImage.size;
+    self.imageView.frame = imageViewFrame;
+    self.imageView.image = scaledImage;
+    
 }
 
 - (void)centerView:(UIView *)view inScrollView:(UIScrollView *)scrollView
@@ -165,7 +173,6 @@
     }
     
     view.frame = frameToCenter;
-//    DLog(@"view frame: %@", NSStringFromCGRect(frameToCenter));
 }
 
 
@@ -191,6 +198,8 @@
 - (IBAction)brightnessButtonPressed:(id)sender
 {
     self.selectedButton = sender;
+    self.slider.minimumValue = -.7;
+    self.slider.maximumValue = .7;
     self.slider.value = self.brightness;
 }
 
@@ -216,16 +225,25 @@
 #pragma mark - Helpers
 - (void)tuneBrightnessWithValue:(float)value
 {
+//    if ((int)(value * 1000) % 10 != 0) {
+//        return;
+//    }
     [self.colorFilter setValue:@(value) forKey:@"inputBrightness"];
     [self setImageViewWithOutputImage];
 }
 
 - (void)setImageViewWithOutputImage
 {
-    CIImage *outputImage = [self.colorFilter outputImage];
-    CGImageRef imgRef = [self.context createCGImage:outputImage fromRect:[outputImage extent]];
-    self.image = [UIImage imageWithCGImage:imgRef];
-    CGImageRelease(imgRef);
+//    dispatch_queue_t queue = dispatch_queue_create("Tune Photo Brightness", 0);
+//    dispatch_async(queue, ^{
+        CIImage *outputImage = [self.colorFilter outputImage];
+        CGImageRef imgRef = [self.context createCGImage:outputImage fromRect:[outputImage extent]];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = [UIImage imageWithCGImage:imgRef];
+            CGImageRelease(imgRef);
+//        });
+//    });
+   
 }
 
 - (void)resetButtonState: (UIButton *)button

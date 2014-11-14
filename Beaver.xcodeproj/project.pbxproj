@@ -20,6 +20,7 @@
 		6B24521E1A0A57AE005F4CEF /* ToolCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B24521D1A0A57AE005F4CEF /* ToolCellInfo.m */; };
 		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
 		6B4F93731A14C27600A6A619 /* UIButton+Rounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */; };
+		6B4F93771A15ABA100A6A619 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
 		6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D41A109D2A007F549D /* TunePhotoViewController.m */; };
 		6BA831D91A10A4C2007F549D /* EditBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D81A10A4C2007F549D /* EditBaseViewController.m */; };
@@ -64,6 +65,8 @@
 		6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cropping.m"; sourceTree = "<group>"; };
 		6B4F93711A14C27600A6A619 /* UIButton+Rounded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Rounded.h"; sourceTree = "<group>"; };
 		6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Rounded.m"; sourceTree = "<group>"; };
+		6B4F93751A15ABA100A6A619 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		6BA831D31A109D2A007F549D /* TunePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunePhotoViewController.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */,
 				6B4F93711A14C27600A6A619 /* UIButton+Rounded.h */,
 				6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */,
+				6B4F93751A15ABA100A6A619 /* UIImage+Scale.h */,
+				6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2451B51A0908AA005F4CEF /* AppDelegate.m in Sources */,
+				6B4F93771A15ABA100A6A619 /* UIImage+Scale.m in Sources */,
 				6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */,
 				6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */,
 				6B4F93731A14C27600A6A619 /* UIButton+Rounded.m in Sources */,
