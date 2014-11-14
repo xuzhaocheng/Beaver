@@ -77,9 +77,9 @@
 - (CIFilter *)colorFilter
 {
     if (!_colorFilter) {
-        _colorFilter = [CIFilter filterWithName:@"CIColorControls"];
-        CIImage *ciImg = [CIImage imageWithCGImage:[self.imageView.image CGImage]];
-        [_colorFilter setValue:ciImg forKey:kCIInputImageKey];
+        _colorFilter = [CIFilter filterWithName:@"CIColorControls"
+                                  keysAndValues:kCIInputImageKey, [CIImage imageWithCGImage:[self.imageView.image CGImage]],
+                                                nil];
     }
     return _colorFilter;
 }
@@ -98,6 +98,18 @@
     [self tuneBrightnessWithValue:brightness];
 }
 
+- (void)setContrast:(float)contrast
+{
+    _contrast = contrast;
+    [self tuneContrastWithValue:contrast];
+}
+
+- (void)setSaturation:(float)saturation
+{
+    _saturation = saturation;
+    [self tuneSaturationWithValue:saturation];
+}
+
 - (void)updateUI
 {
     
@@ -107,10 +119,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _brightness = 0.f;
+    _contrast = 1.f;
+    
+    
     [self.brightnessButton roundedWithCornerRadius:5.f];
     [self.colorTemperatureButton roundedWithCornerRadius:5.f];
     [self.saturationButton roundedWithCornerRadius:5.f];
     [self.contrastButton roundedWithCornerRadius:5.f];
+    
     
     [self.scrollView addSubview:self.imageView];
 }
@@ -191,21 +208,27 @@
 - (IBAction)sliderValueChanged:(UISlider *)sender
 {
     if (self.selectedButton == self.brightnessButton) {
-        [self tuneBrightnessWithValue:sender.value];
+        self.brightness = sender.value;
+    } else if (self.selectedButton == self.contrastButton) {
+        self.contrast = sender.value;
+    } else if (self.selectedButton == self.saturationButton) {
+        self.saturation = sender.value;
     }
 }
 
 - (IBAction)brightnessButtonPressed:(id)sender
 {
     self.selectedButton = sender;
-    self.slider.minimumValue = -.7;
-    self.slider.maximumValue = .7;
+    self.slider.minimumValue = -.5;
+    self.slider.maximumValue = .5;
     self.slider.value = self.brightness;
 }
 
 - (IBAction)contrastButtonPressed:(id)sender
 {
     self.selectedButton = sender;
+    self.slider.minimumValue = 0.5;
+    self.slider.maximumValue = 1.5;
     self.slider.value = self.contrast;
 }
 
@@ -218,6 +241,8 @@
 - (IBAction)saturationButtonPressed:(id)sender
 {
     self.selectedButton = sender;
+    self.slider.minimumValue = 0;
+    self.slider.maximumValue = 2;
     self.slider.value = self.saturation;
 }
 
@@ -225,25 +250,28 @@
 #pragma mark - Helpers
 - (void)tuneBrightnessWithValue:(float)value
 {
-//    if ((int)(value * 1000) % 10 != 0) {
-//        return;
-//    }
     [self.colorFilter setValue:@(value) forKey:@"inputBrightness"];
     [self setImageViewWithOutputImage];
 }
 
+- (void)tuneContrastWithValue:(float)value
+{
+    [self.colorFilter setValue:@(value) forKey:@"inputContrast"];
+    [self setImageViewWithOutputImage];
+}
+
+
+- (void)tuneSaturationWithValue:(float)value
+{
+    [self.colorFilter setValue:@(value) forKey:@"inputSaturation"];
+    [self setImageViewWithOutputImage];
+}
 - (void)setImageViewWithOutputImage
 {
-//    dispatch_queue_t queue = dispatch_queue_create("Tune Photo Brightness", 0);
-//    dispatch_async(queue, ^{
-        CIImage *outputImage = [self.colorFilter outputImage];
-        CGImageRef imgRef = [self.context createCGImage:outputImage fromRect:[outputImage extent]];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            self.image = [UIImage imageWithCGImage:imgRef];
-            CGImageRelease(imgRef);
-//        });
-//    });
-   
+    CIImage *outputImage = [self.colorFilter outputImage];
+    CGImageRef imgRef = [self.context createCGImage:outputImage fromRect:[outputImage extent]];
+    self.image = [UIImage imageWithCGImage:imgRef];
+    CGImageRelease(imgRef);
 }
 
 - (void)resetButtonState: (UIButton *)button
