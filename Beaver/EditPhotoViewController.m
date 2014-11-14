@@ -102,7 +102,6 @@
     self.toolsView.backgroundColor = [UIColor clearColor];
     
     [self setScrollViewContentInsets];
-    [self updateImageScrollView];
     [self.imageScrollView addSubview:self.imageView];
 }
 
@@ -114,6 +113,7 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    [self updateImageScrollView];
     [self centeredFrame:self.imageView forScrollView:self.imageScrollView];
 }
 
@@ -148,6 +148,7 @@
 {
     CGRect bounds = self.imageScrollView.bounds;
     bounds.size.width -= self.imageScrollView.contentInset.left + self.imageScrollView.contentInset.right;
+    bounds.size.height -= self.imageScrollView.contentInset.top + self.imageScrollView.contentInset.bottom;
     
     CGFloat xScale = bounds.size.width / self.image.size.width;
     CGFloat yScale = bounds.size.height / self.image.size.height;

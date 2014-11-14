@@ -18,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *contrastButton;
 @property (weak, nonatomic) IBOutlet UIButton *colorTemperatureButton;
 @property (weak, nonatomic) IBOutlet UIButton *saturationButton;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
+@property (strong, nonatomic) UIButton *selectedButton;
 @property (strong, nonatomic) UIImageView *imageView;
 
 @property (nonatomic) float brightness;
@@ -26,12 +28,19 @@
 @property (nonatomic) float colorTemperature;
 @property (nonatomic) float saturation;
 
+@property (nonatomic, strong) CIFilter *colorFilter;
+@property (nonatomic, strong) CIContext *context;
+
 @end
 
 @implementation TunePhotoViewController
+@synthesize image = _image;
 
+#pragma mark - Properties
 - (void)setImage:(UIImage *)image
 {
+    _image = image;
+    self.scrollView.zoomScale = 1.f;
     self.imageView.image = image;
     self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     if (self.scrollView) {
@@ -39,10 +48,6 @@
     }
 }
 
-- (UIImage *)image
-{
-    return self.imageView.image;
-}
 
 - (UIImageView *)imageView
 {
@@ -50,6 +55,13 @@
         _imageView = [[UIImageView alloc] init];
     }
     return _imageView;
+}
+
+- (void)setSelectedButton:(UIButton *)selectedButton
+{
+    [self resetButtonState:_selectedButton];
+    _selectedButton = selectedButton;
+    [self setButtonSelectedState:_selectedButton];
 }
 
 #define EDGE_PADDING 10.f
@@ -60,12 +72,34 @@
     insets.top += EDGE_PADDING;
     insets.left += EDGE_PADDING;
     insets.right += EDGE_PADDING;
-    insets.bottom += EDGE_PADDING;
+    insets.bottom += EDGE_PADDING + 100.f;
     _scrollView.contentInset = insets;
     _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width - EDGE_PADDING * 2, _scrollView.bounds.size.height - 2 * EDGE_PADDING);
-    if (_imageView) [self setScrollViewMinAndMaxZoomScale];
 }
 
+- (CIFilter *)colorFilter
+{
+    if (!_colorFilter) {
+        _colorFilter = [CIFilter filterWithName:@"CIColorControls"];
+        CIImage *ciImg = [CIImage imageWithCGImage:[self.image CGImage]];
+        [_colorFilter setValue:ciImg forKey:kCIInputImageKey];
+    }
+    return _colorFilter;
+}
+
+- (CIContext *)context
+{
+    if (!_context) {
+        _context = [CIContext contextWithOptions:nil];
+    }
+    return _context;
+}
+
+- (void)setBrightness:(float)brightness
+{
+    _brightness = brightness;
+    [self tuneBrightnessWithValue:brightness];
+}
 
 - (void)updateUI
 {
@@ -88,13 +122,12 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    [self setScrollViewMinAndMaxZoomScale];
     [self centerView:self.imageView inScrollView:self.scrollView];
 }
 
 - (void)setScrollViewMinAndMaxZoomScale
 {
-    self.scrollView.zoomScale = 1.f;
-    
     CGRect bounds = self.scrollView.bounds;
     bounds.size.width -= self.scrollView.contentInset.left + self.scrollView.contentInset.right;
     bounds.size.height -= self.scrollView.contentInset.top + self.scrollView.contentInset.bottom;
@@ -102,7 +135,7 @@
     CGFloat xScale = bounds.size.width / self.image.size.width;
     CGFloat yScale = bounds.size.height / self.image.size.height;
     CGFloat minScale = MIN(xScale, yScale);
-    
+
     self.scrollView.minimumZoomScale = minScale;
     self.scrollView.maximumZoomScale = 3.f;
     self.scrollView.zoomScale = minScale;
@@ -132,7 +165,7 @@
     }
     
     view.frame = frameToCenter;
-    DLog(@"view frame: %@", NSStringFromCGRect(frameToCenter));
+//    DLog(@"view frame: %@", NSStringFromCGRect(frameToCenter));
 }
 
 
@@ -148,41 +181,51 @@
 }
 
 #pragma mark - Actions
-- (IBAction)sliderValueChanged:(id)sender
+- (IBAction)sliderValueChanged:(UISlider *)sender
 {
-    
+    if (self.selectedButton == self.brightnessButton) {
+        [self tuneBrightnessWithValue:sender.value];
+    }
 }
 
 - (IBAction)brightnessButtonPressed:(id)sender
 {
-    [self clearButtonsStates];
-    [self setButtonSelectedState:sender];
+    self.selectedButton = sender;
+    self.slider.value = self.brightness;
 }
 
 - (IBAction)contrastButtonPressed:(id)sender
 {
-    [self clearButtonsStates];
-    [self setButtonSelectedState:sender];
+    self.selectedButton = sender;
+    self.slider.value = self.contrast;
 }
 
 - (IBAction)colorTemperatureButtonPressed:(id)sender
 {
-    [self clearButtonsStates];
-    [self setButtonSelectedState:sender];
+    self.selectedButton = sender;
+    self.slider.value = self.colorTemperature;
 }
 
 - (IBAction)saturationButtonPressed:(id)sender
 {
-    [self clearButtonsStates];
-    [self setButtonSelectedState:sender];
+    self.selectedButton = sender;
+    self.slider.value = self.saturation;
 }
 
-- (void)clearButtonsStates
+
+#pragma mark - Helpers
+- (void)tuneBrightnessWithValue:(float)value
 {
-    [self resetButtonState:self.brightnessButton];
-    [self resetButtonState:self.contrastButton];
-    [self resetButtonState:self.colorTemperatureButton];
-    [self resetButtonState:self.saturationButton];
+    [self.colorFilter setValue:@(value) forKey:@"inputBrightness"];
+    [self setImageViewWithOutputImage];
+}
+
+- (void)setImageViewWithOutputImage
+{
+    CIImage *outputImage = [self.colorFilter outputImage];
+    CGImageRef imgRef = [self.context createCGImage:outputImage fromRect:[outputImage extent]];
+    self.image = [UIImage imageWithCGImage:imgRef];
+    CGImageRelease(imgRef);
 }
 
 - (void)resetButtonState: (UIButton *)button
