@@ -13,13 +13,15 @@
 #import "ToolCellInfo.h"
 #import "CroppingPhotoViewController.h"
 #import "TunePhotoViewController.h"
+#import "EditPhotoDelegate.h"
+
 #import "Logs.h"
 
 #import "UIImageView+Cropping.h"
 
 
 
-@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, CroppingPhotoDelegate>
+@interface EditPhotoViewController () <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, EditPhotoDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
@@ -240,6 +242,11 @@
     self.image = image;
 }
 
+#pragma mark - Edit Photo Delegate
+- (void)didFinishEditingPhoto:(UIImage *)image
+{
+    self.image = image;
+}
 
 
 #pragma mark - Navigation
@@ -253,7 +260,8 @@
         cpvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"Tune Photo"]) {
         TunePhotoViewController *tpvc = (TunePhotoViewController *)[segue.destinationViewController topViewController];
-        tpvc.image = self.image;
+        tpvc.originImage = self.image;
+        tpvc.delegate = self;
     }
 }
 

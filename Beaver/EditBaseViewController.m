@@ -28,9 +28,12 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                          target:self
-                                                                                          action:@selector(cancelAction:)];
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                          target:self
+                                                                          action:@selector(cancelAction:)];
+    [left setTintColor:[UIColor whiteColor]];
+    
+    self.navigationItem.leftBarButtonItem = left;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Apply"
                                                                               style:UIBarButtonItemStyleBordered

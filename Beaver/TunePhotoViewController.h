@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EditBaseViewController.h"
 
-@interface TunePhotoViewController : EditBaseViewController
+#import "EditPhotoDelegate.h"
 
+@interface TunePhotoViewController : EditBaseViewController
+@property (strong, nonatomic) UIImage *originImage;
+@property (weak, nonatomic) id <EditPhotoDelegate> delegate;
 @end

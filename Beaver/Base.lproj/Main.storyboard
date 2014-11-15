@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -129,6 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Photo" id="hRH-pm-MIt">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Mo-vQ-HIG">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="GC7-iC-3m6" kind="unwind" identifier="Edit Done" unwindAction="editDone:" id="7R2-N8-97D"/>
                             </connections>
@@ -312,7 +312,6 @@
                     <navigationItem key="navigationItem" title="Tune Photo" id="oEO-Ay-lsU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="bottomView" destination="wqs-EJ-THC" id="hXI-OI-hur"/>
                         <outlet property="brightnessButton" destination="4JV-Le-Ua2" id="i91-5E-JaU"/>
                         <outlet property="colorTemperatureButton" destination="WTC-Fg-bep" id="guB-QW-nLd"/>
                         <outlet property="contrastButton" destination="yxL-LJ-xGY" id="zGi-dU-MTu"/>

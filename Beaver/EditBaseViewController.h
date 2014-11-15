@@ -13,4 +13,8 @@
 @property (nonatomic, strong) UIBarButtonItem *rightBarButtonItem;
 
 @property (nonatomic, strong) UIImage *image;
+
+- (void)applyAction:(id)sender;
+- (void)cancelAction:(id)sender;
+
 @end

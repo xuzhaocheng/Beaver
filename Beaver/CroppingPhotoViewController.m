@@ -66,7 +66,6 @@
     bounds.size.width -= 2 *PADDING;
     bounds.size.height -= 2 *PADDING;
 
-    
     CGFloat xScale = bounds.size.width / self.imageView.image.size.width;
     CGFloat yScale = self.view.frame.size.height / self.imageView.image.size.height;
     CGFloat minScale = MIN(xScale, yScale);
@@ -91,8 +90,8 @@
 - (void)applyAction:(id)sender
 {
     UIImage *image = [self.imageView cropInVisiableRect];
-    if ([self.delegate respondsToSelector:@selector(didCroppingViewInCropRect:)]) {
-        [self.delegate didCroppingViewInCropRect:image];
+    if ([self.delegate respondsToSelector:@selector(didFinishEditingPhoto:)]) {
+        [self.delegate didFinishEditingPhoto:image];
     }
     [self dismissViewControllerAnimated:NO completion:NULL];
 }

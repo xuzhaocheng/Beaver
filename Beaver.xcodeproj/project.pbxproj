@@ -67,6 +67,7 @@
 		6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Rounded.m"; sourceTree = "<group>"; };
 		6B4F93751A15ABA100A6A619 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		6B5887B91A170B7500C26F37 /* EditPhotoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoDelegate.h; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		6BA831D31A109D2A007F549D /* TunePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunePhotoViewController.h; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 			children = (
 				6BA831D71A10A4C2007F549D /* EditBaseViewController.h */,
 				6BA831D81A10A4C2007F549D /* EditBaseViewController.m */,
+				6B5887B91A170B7500C26F37 /* EditPhotoDelegate.h */,
 			);
 			name = BaseViewController;
 			sourceTree = "<group>";
