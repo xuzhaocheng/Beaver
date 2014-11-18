@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EditBaseViewController.h"
-#import "EditPhotoDelegate.h"
-
 
 @interface CroppingPhotoViewController : EditBaseViewController
-@property (nonatomic, weak) id <EditPhotoDelegate> delegate;
+
 @end

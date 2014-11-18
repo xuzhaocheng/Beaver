@@ -30,7 +30,8 @@
     return self.imageView.image;
 }
 
-#define PADDING 10.f
+
+#define EDGE_PADDING 10.f
 - (UIImageView *)imageView
 {
     if (!_imageView) {
@@ -61,10 +62,10 @@
 {
     [super viewWillLayoutSubviews];
     CGRect bounds = self.view.bounds;
-    bounds.origin.x = PADDING;
-    bounds.origin.y += PADDING;
-    bounds.size.width -= 2 *PADDING;
-    bounds.size.height -= 2 *PADDING;
+    bounds.origin.x = EDGE_PADDING;
+    bounds.origin.y += EDGE_PADDING;
+    bounds.size.width -= 2 * EDGE_PADDING;
+    bounds.size.height -= 2 * EDGE_PADDING;
 
     CGFloat xScale = bounds.size.width / self.imageView.image.size.width;
     CGFloat yScale = self.view.frame.size.height / self.imageView.image.size.height;
