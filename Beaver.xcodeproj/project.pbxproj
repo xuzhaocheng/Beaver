@@ -21,7 +21,9 @@
 		6B2452211A0B46CD005F4CEF /* UIImageView+Cropping.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2452201A0B46CD005F4CEF /* UIImageView+Cropping.m */; };
 		6B4F93731A14C27600A6A619 /* UIButton+Rounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */; };
 		6B4F93771A15ABA100A6A619 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */; };
+		6B5BB28C1A1B01E900B15749 /* UIImage+Rotating.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5BB28B1A1B01E900B15749 /* UIImage+Rotating.m */; };
 		6B691EBA1A0939AC00931CF9 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B691EB91A0939AC00931CF9 /* PhotoCell.m */; };
+		6B7883D11A1AE1EA003A8643 /* RotatePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7883D01A1AE1EA003A8643 /* RotatePhotoViewController.m */; };
 		6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D41A109D2A007F549D /* TunePhotoViewController.m */; };
 		6BA831D91A10A4C2007F549D /* EditBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D81A10A4C2007F549D /* EditBaseViewController.m */; };
 		6BE9A9F51A0C74B600EB2DE8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */; };
@@ -68,8 +70,12 @@
 		6B4F93751A15ABA100A6A619 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		6B5887B91A170B7500C26F37 /* EditPhotoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhotoDelegate.h; sourceTree = "<group>"; };
+		6B5BB28A1A1B01E900B15749 /* UIImage+Rotating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotating.h"; sourceTree = "<group>"; };
+		6B5BB28B1A1B01E900B15749 /* UIImage+Rotating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotating.m"; sourceTree = "<group>"; };
 		6B691EB81A0939AC00931CF9 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		6B691EB91A0939AC00931CF9 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		6B7883CF1A1AE1EA003A8643 /* RotatePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatePhotoViewController.h; sourceTree = "<group>"; };
+		6B7883D01A1AE1EA003A8643 /* RotatePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatePhotoViewController.m; sourceTree = "<group>"; };
 		6BA831D31A109D2A007F549D /* TunePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunePhotoViewController.h; sourceTree = "<group>"; };
 		6BA831D41A109D2A007F549D /* TunePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TunePhotoViewController.m; sourceTree = "<group>"; };
 		6BA831D71A10A4C2007F549D /* EditBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBaseViewController.h; sourceTree = "<group>"; };
@@ -222,6 +228,8 @@
 				6B4F93721A14C27600A6A619 /* UIButton+Rounded.m */,
 				6B4F93751A15ABA100A6A619 /* UIImage+Scale.h */,
 				6B4F93761A15ABA100A6A619 /* UIImage+Scale.m */,
+				6B5BB28A1A1B01E900B15749 /* UIImage+Rotating.h */,
+				6B5BB28B1A1B01E900B15749 /* UIImage+Rotating.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -234,6 +242,8 @@
 				6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */,
 				6BA831D31A109D2A007F549D /* TunePhotoViewController.h */,
 				6BA831D41A109D2A007F549D /* TunePhotoViewController.m */,
+				6B7883CF1A1AE1EA003A8643 /* RotatePhotoViewController.h */,
+				6B7883D01A1AE1EA003A8643 /* RotatePhotoViewController.m */,
 			);
 			name = "Photo Editors";
 			sourceTree = "<group>";
@@ -371,6 +381,8 @@
 				6B2451B21A0908AA005F4CEF /* main.m in Sources */,
 				6B2451BB1A0908AA005F4CEF /* MainViewController.m in Sources */,
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,
+				6B5BB28C1A1B01E900B15749 /* UIImage+Rotating.m in Sources */,
+				6B7883D11A1AE1EA003A8643 /* RotatePhotoViewController.m in Sources */,
 				6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

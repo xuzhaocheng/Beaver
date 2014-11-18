@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Beaver-->
@@ -141,6 +142,7 @@
                         <outlet property="toolsView" destination="Jv6-KI-PXi" id="d0D-Ii-n9a"/>
                         <segue destination="YtP-Mj-0CT" kind="presentation" identifier="Crop Photo" animates="NO" id="XuG-gE-crt"/>
                         <segue destination="YOO-gH-TJj" kind="presentation" identifier="Tune Photo" animates="NO" id="vTi-On-p1O"/>
+                        <segue destination="sPP-0A-UQG" kind="presentation" identifier="Rotate Photo" animates="NO" id="ocn-Ap-x8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS3-O5-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,7 +177,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2743" y="136"/>
+            <point key="canvasLocation" x="2758" y="-1058"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mTd-Rf-ueu">
@@ -230,7 +232,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1K-l0-I0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="136"/>
+            <point key="canvasLocation" x="2297" y="-1058"/>
         </scene>
         <!--Tune Photo-->
         <scene sceneID="xnL-1W-wUp">
@@ -322,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBV-eh-gbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2743" y="777"/>
+            <point key="canvasLocation" x="2758" y="-417"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CLK-P9-zsj">
@@ -340,7 +342,97 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9n-qI-4DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="777"/>
+            <point key="canvasLocation" x="2297" y="-417"/>
+        </scene>
+        <!--Rotate Photo-->
+        <scene sceneID="Hg5-eF-yLL">
+            <objects>
+                <viewController id="Irx-mS-ZVd" customClass="RotatePhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hks-ao-lf3"/>
+                        <viewControllerLayoutGuide type="bottom" id="cuS-MR-0NI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FuQ-5b-ZL3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUt-bM-PZy">
+                                <rect key="frame" x="95" y="530" width="30" height="30"/>
+                                <state key="normal" title="右">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rightRotation:" destination="Irx-mS-ZVd" eventType="touchUpInside" id="o4r-GD-9YZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rvg-4c-5Kp">
+                                <rect key="frame" x="16" y="530" width="30" height="30"/>
+                                <state key="normal" title="左">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftRotation:" destination="Irx-mS-ZVd" eventType="touchUpInside" id="aMV-fw-8mx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-45-GeB">
+                                <rect key="frame" x="274" y="530" width="30" height="30"/>
+                                <state key="normal" title="水平">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="horizontalRotation:" destination="Irx-mS-ZVd" eventType="touchUpInside" id="C0w-JO-100"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ld6-VE-sGj">
+                                <rect key="frame" x="180" y="530" width="30" height="30"/>
+                                <state key="normal" title="垂直">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="verticalRotation:" destination="Irx-mS-ZVd" eventType="touchUpInside" id="gj0-AN-Hzh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eaK-45-GeB" firstAttribute="trailing" secondItem="FuQ-5b-ZL3" secondAttribute="trailingMargin" id="Ewo-4R-B5N"/>
+                            <constraint firstItem="ld6-VE-sGj" firstAttribute="baseline" secondItem="hUt-bM-PZy" secondAttribute="baseline" id="N3o-Nq-zt9"/>
+                            <constraint firstItem="hUt-bM-PZy" firstAttribute="baseline" secondItem="Rvg-4c-5Kp" secondAttribute="baseline" id="OMp-RD-zM7"/>
+                            <constraint firstItem="Rvg-4c-5Kp" firstAttribute="leading" secondItem="FuQ-5b-ZL3" secondAttribute="leadingMargin" id="d7z-Lx-sLw"/>
+                            <constraint firstItem="hUt-bM-PZy" firstAttribute="leading" secondItem="Rvg-4c-5Kp" secondAttribute="trailing" constant="49" id="lvI-2K-beH"/>
+                            <constraint firstItem="ld6-VE-sGj" firstAttribute="baseline" secondItem="eaK-45-GeB" secondAttribute="baseline" id="mRL-0W-sXF"/>
+                            <constraint firstItem="cuS-MR-0NI" firstAttribute="top" secondItem="Rvg-4c-5Kp" secondAttribute="bottom" constant="8" symbolic="YES" id="pYk-bz-E9z"/>
+                            <constraint firstItem="ld6-VE-sGj" firstAttribute="leading" secondItem="hUt-bM-PZy" secondAttribute="trailing" constant="55" id="woD-jg-fU5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Rotate Photo" id="DXN-TZ-e1m"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HqH-rA-G4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2758" y="241"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RtS-xQ-tk6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sPP-0A-UQG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="77e-HZ-1bh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Irx-mS-ZVd" kind="relationship" relationship="rootViewController" id="IKa-jo-1PB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nrx-sh-avq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2297" y="246"/>
         </scene>
     </scenes>
 </document>

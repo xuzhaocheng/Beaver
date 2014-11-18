@@ -11,9 +11,11 @@
 #import "EditPhotoViewController.h"
 #import "ToolCell.h"
 #import "ToolCellInfo.h"
+#import "EditPhotoDelegate.h"
+
 #import "CroppingPhotoViewController.h"
 #import "TunePhotoViewController.h"
-#import "EditPhotoDelegate.h"
+#import "RotatePhotoViewController.h"
 
 #import "Logs.h"
 
@@ -89,6 +91,7 @@
         NSMutableArray *aMutableArray = [[NSMutableArray alloc] init];
         [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Crop" icon:@""]];
         [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Tune" icon:@""]];
+        [aMutableArray addObject:[[ToolCellInfo alloc] initWithTitle:@"Rotate" icon:@""]];
         _toolCellInfos = aMutableArray;
     }
     return _toolCellInfos;
@@ -262,6 +265,10 @@
         TunePhotoViewController *tpvc = (TunePhotoViewController *)[segue.destinationViewController topViewController];
         tpvc.originImage = self.image;
         tpvc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"Rotate Photo"]) {
+        RotatePhotoViewController *rpvc = (RotatePhotoViewController *)[segue.destinationViewController topViewController];
+        rpvc.image = self.image;
+        rpvc.delegate = self;
     }
 }
 
