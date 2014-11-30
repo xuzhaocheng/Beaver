@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lp8-7I-Eo1">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -356,6 +357,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DY8-M7-Fan" customClass="MaskView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUt-bM-PZy">
                                 <rect key="frame" x="95" y="530" width="30" height="30"/>
                                 <state key="normal" title="右">
@@ -399,9 +403,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DY8-M7-Fan" secondAttribute="trailing" id="DGU-6Z-X0b"/>
                             <constraint firstItem="eaK-45-GeB" firstAttribute="trailing" secondItem="FuQ-5b-ZL3" secondAttribute="trailingMargin" id="Ewo-4R-B5N"/>
                             <constraint firstItem="ld6-VE-sGj" firstAttribute="baseline" secondItem="hUt-bM-PZy" secondAttribute="baseline" id="N3o-Nq-zt9"/>
                             <constraint firstItem="hUt-bM-PZy" firstAttribute="baseline" secondItem="Rvg-4c-5Kp" secondAttribute="baseline" id="OMp-RD-zM7"/>
+                            <constraint firstItem="DY8-M7-Fan" firstAttribute="leading" secondItem="FuQ-5b-ZL3" secondAttribute="leading" id="RZq-WS-8dG"/>
+                            <constraint firstItem="DY8-M7-Fan" firstAttribute="top" secondItem="FuQ-5b-ZL3" secondAttribute="top" id="S2e-uf-ShX"/>
+                            <constraint firstAttribute="bottom" secondItem="DY8-M7-Fan" secondAttribute="bottom" id="VWz-Yk-yP1"/>
                             <constraint firstItem="Rvg-4c-5Kp" firstAttribute="leading" secondItem="FuQ-5b-ZL3" secondAttribute="leadingMargin" id="d7z-Lx-sLw"/>
                             <constraint firstItem="hUt-bM-PZy" firstAttribute="leading" secondItem="Rvg-4c-5Kp" secondAttribute="trailing" constant="49" id="lvI-2K-beH"/>
                             <constraint firstItem="ld6-VE-sGj" firstAttribute="baseline" secondItem="eaK-45-GeB" secondAttribute="baseline" id="mRL-0W-sXF"/>
@@ -411,6 +419,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Rotate Photo" id="DXN-TZ-e1m"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="maskView" destination="DY8-M7-Fan" id="as1-h0-DGM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqH-rA-G4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

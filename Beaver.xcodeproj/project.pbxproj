@@ -26,6 +26,7 @@
 		6B7883D11A1AE1EA003A8643 /* RotatePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7883D01A1AE1EA003A8643 /* RotatePhotoViewController.m */; };
 		6BA831D51A109D2A007F549D /* TunePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D41A109D2A007F549D /* TunePhotoViewController.m */; };
 		6BA831D91A10A4C2007F549D /* EditBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA831D81A10A4C2007F549D /* EditBaseViewController.m */; };
+		6BD37E8C1A2ADCD6002107DF /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD37E8B1A2ADCD6002107DF /* MaskView.m */; };
 		6BE9A9F51A0C74B600EB2DE8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */; };
 		6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */; };
 		6BE9AA051A0CFDD400EB2DE8 /* CroppingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE9AA041A0CFDD400EB2DE8 /* CroppingPhotoViewController.m */; };
@@ -80,6 +81,8 @@
 		6BA831D41A109D2A007F549D /* TunePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TunePhotoViewController.m; sourceTree = "<group>"; };
 		6BA831D71A10A4C2007F549D /* EditBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBaseViewController.h; sourceTree = "<group>"; };
 		6BA831D81A10A4C2007F549D /* EditBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBaseViewController.m; sourceTree = "<group>"; };
+		6BD37E8A1A2ADCD6002107DF /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
+		6BD37E8B1A2ADCD6002107DF /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
 		6BE9A9F41A0C74B600EB2DE8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6BE9A9F61A0CFB5600EB2DE8 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		6BE9A9F71A0CFB5600EB2DE8 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				6B691EB91A0939AC00931CF9 /* PhotoCell.m */,
 				6B2452151A0A2F45005F4CEF /* ToolCell.h */,
 				6B2452161A0A2F45005F4CEF /* ToolCell.m */,
+				6BD37E8A1A2ADCD6002107DF /* MaskView.h */,
+				6BD37E8B1A2ADCD6002107DF /* MaskView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				6B2451B81A0908AA005F4CEF /* Beaver.xcdatamodeld in Sources */,
 				6B5BB28C1A1B01E900B15749 /* UIImage+Rotating.m in Sources */,
 				6B7883D11A1AE1EA003A8643 /* RotatePhotoViewController.m in Sources */,
+				6BD37E8C1A2ADCD6002107DF /* MaskView.m in Sources */,
 				6BE9A9F81A0CFB5600EB2DE8 /* NoAnimationSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

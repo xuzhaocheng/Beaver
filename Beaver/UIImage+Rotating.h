@@ -13,4 +13,6 @@
 - (UIImage *)rightRotation;
 - (UIImage *)verticalRotation;
 - (UIImage *)horizontalRotation;
+- (UIImage *)rotateInRadians:(CGFloat)radians;
+- (UIImage *)cropInSize:(CGSize)size afterRotatingInRadians:(CGFloat)radians preScale:(CGFloat)scale;
 @end

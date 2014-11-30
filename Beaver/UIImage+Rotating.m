@@ -10,13 +10,15 @@
 
 @implementation UIImage (Rotating)
 
-
 - (UIImage *)rotateInRadians:(CGFloat)radians
 {
     const CGFloat width = CGImageGetWidth(self.CGImage);
     const CGFloat height = CGImageGetHeight(self.CGImage);
     
-    CGRect rotatedRect = CGRectApplyAffineTransform(CGRectMake(0., 0., width, height), CGAffineTransformMakeRotation(radians));
+    CGRect rotatedRect = CGRectZero;
+    rotatedRect.size = CGSizeMake(width, height);
+    
+    rotatedRect = CGRectApplyAffineTransform(CGRectMake(0., 0., width, height), CGAffineTransformMakeRotation(radians));
     
     UIGraphicsBeginImageContext(rotatedRect.size);
     
@@ -33,6 +35,48 @@
 
     return resultImage;
 }
+
+- (UIImage *)cropInSize:(CGSize)size afterRotatingInRadians:(CGFloat)radians preScale:(CGFloat)scale
+{
+    const CGFloat width = CGImageGetWidth(self.CGImage);
+    const CGFloat height = CGImageGetHeight(self.CGImage);
+    
+    CGRect rotatedRect = CGRectZero;
+    rotatedRect.size = CGSizeMake(width, height);
+    
+    rotatedRect = CGRectApplyAffineTransform(CGRectMake(0., 0., width, height), CGAffineTransformMakeRotation(radians));
+    
+    
+    UIGraphicsBeginImageContext(rotatedRect.size);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(context, rotatedRect.size.width / 2, rotatedRect.size.height / 2);
+    CGContextRotateCTM(context, radians);
+    CGContextTranslateCTM(context, - width / 2, - height / 2);
+    
+    [self drawInRect:CGRectMake(0, 0, width, height)];
+    
+    UIImage *rotatedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    CGFloat rotatedScale = MAX(rotatedRect.size.height / height, rotatedRect.size.width / width);
+    CGFloat imageScale = scale / rotatedScale;
+    
+    CGRect rect;
+    rect.origin.x = (rotatedImage.size.width - size.width * imageScale) / 2;
+    rect.origin.y = (rotatedImage.size.height - size.height * imageScale) / 2;
+    rect.size.width = size.width * imageScale;
+    rect.size.height = size.height * imageScale;
+
+    CGImageRef imageRef = CGImageCreateWithImageInRect([rotatedImage CGImage], rect);
+    UIImage *resultImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return resultImage;
+}
+
+
 
 - (UIImage *)flipOverHorizontalAxis:(BOOL)doHorizontalFlip verticalAxis:(BOOL)doVerticalFlip
 {
